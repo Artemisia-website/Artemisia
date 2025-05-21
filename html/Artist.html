@@ -258,13 +258,67 @@
             </div>
         </section>
 
+        <!-- SeventhJustice -->
+        <section id="133">
+            <section class="profile-section" data-style="Аниме">
+                <img src="https://i.postimg.cc/KcVVpjc2/photo-5289503712995312004-y.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> SeventhJustice</h1>
+                    <a href="https://t.me/SeventhJustice" class="profile-link">
+                        @SeventhJustice
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Аниме </p>
+                    <div class="social-links">
+                        <a href="https://t.me/SLKeshka" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist133Carousel">
+                <div class="works-inner" id="artist133Works">
+                    <img src="https://i.postimg.cc/zvLQXZj6/photo-5289503712995312002-y.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/5yZRX7K0/photo-5289503712995312003-y.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/kXbH0CDt/photo-5289677044990473787-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/Dw3NFNbp/photo-5291828935274916407-y.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/63bSX5dC/photo-5291828935274916408-y.jpg" class="work-thumb-2" alt="">
+                  
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist133Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist133Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal133')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal133" class="modal">
+                <span class="close-btn" onclick="closeModal('modal133')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/zvLQXZj6/photo-5289503712995312002-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/5yZRX7K0/photo-5289503712995312003-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/kXbH0CDt/photo-5289677044990473787-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Dw3NFNbp/photo-5291828935274916407-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/63bSX5dC/photo-5291828935274916408-y.jpg" class="modal-img" alt="">
+                   
+
+                </div>
+            </div>
+        </section>
+
         <!-- pirozhoksmyatoy Prem -->
         <section id="109">
             <section class="profile-section" data-style="Семиреализм" data-prem="true"
                 style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/63wkZcL5/photo-5289694173320048750-y.jpg')">
                 <div class="avatar-container" onclick="window.location.href='../Prem/pirozhoksmyatoy.html'">
                     <div class="avatar-border"></div>
-                    <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" alt="Аватар" class="avatar">
+                    <img src="https://i.postimg.cc/5NSr43qx/photo-5289542427830515910-x.jpg" alt="Аватар" class="avatar">
                     <div class="profile-button"> Профиль</div>
                 </div>
 
@@ -336,7 +390,7 @@
         <!--Forlit Prem -->
         <section id="132">
             <section class="profile-section" data-style="Авторский" data-prem="true"
-                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/cHPp3Lr0/118-20250521162910.jpg')">
                 <div class="avatar-container" onclick="window.location.href='../Prem/Forlit.html'">
                     <div class="avatar-border"></div>
                     <img src="https://i.postimg.cc/QMqgN1q7/photo-5280961993706172824-y.jpg" alt="Аватар" class="avatar">
@@ -9904,6 +9958,8 @@
             initCarousel('artist130Works');
             initCarousel('artist131Works');
             initCarousel('artist132Works');
+            initCarousel('artist133Works');
+
 
 
 
