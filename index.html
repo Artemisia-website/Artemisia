@@ -1069,12 +1069,12 @@
                     resultItem.className = 'search-result-item';
 
                     resultItem.innerHTML = `
-                        <img src="${artistAvatar}" alt="${artistName}">
-                        <div class="info">
-                            <div class="name">${artist.querySelector('h1').textContent}</div>
-                            <div class="style">${artist.querySelector('p').textContent}</div>
-                        </div>
-                    `;
+                    <img src="${artistAvatar}" alt="${artistName}">
+                    <div class="info">
+                        <div class="name">${artist.querySelector('h1').textContent}</div>
+                        <div class="style">${artist.querySelector('p').textContent}</div>
+                    </div>
+                `;
 
                     resultItem.onclick = () => {
                         document.getElementById('searchInput').value = '';
@@ -1182,6 +1182,7 @@
 
         // Carousel Functionality
         const carouselStates = {};
+        const autoScrollIntervals = {};
 
         // Проверка, виден ли последний элемент
         function isLastItemVisible(worksInnerId) {
@@ -1198,11 +1199,14 @@
             return lastItemRect.right <= containerRect.right + 5;
         }
 
-
         // Initialize carousels when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             initCarousel('newPublicationsWorks');
             initCarousel('popularArtistsWorks');
+
+            // Start auto-scrolling for both carousels
+            startAutoScroll('newPublicationsWorks');
+            startAutoScroll('popularArtistsWorks');
 
             // Adapt carousels on window resize
             window.addEventListener('resize', () => {
@@ -1212,6 +1216,55 @@
                 });
             });
         });
+
+        // Function to start auto-scrolling
+        function startAutoScroll(worksInnerId) {
+            // Clear any existing interval for this carousel
+            if (autoScrollIntervals[worksInnerId]) {
+                clearInterval(autoScrollIntervals[worksInnerId]);
+            }
+
+            // Set new interval
+            autoScrollIntervals[worksInnerId] = setInterval(() => {
+                const state = carouselStates[worksInnerId];
+                const worksInner = document.getElementById(worksInnerId);
+                const isArtistCarousel = worksInner.classList.contains('artists-inner');
+                const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+                if (items.length === 0) return;
+
+                const itemWidth = isArtistCarousel ? items[0].offsetWidth + 30 : items[0].offsetWidth + 20;
+                const visibleItems = getVisibleItemsCount(worksInnerId);
+                const maxTranslate = -(items.length - visibleItems) * itemWidth;
+
+                // If we're at the end, reset to start
+                if (state.currentTranslate <= maxTranslate) {
+                    state.currentIndex = 0;
+                    state.currentTranslate = 0;
+                    worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+                } else {
+                    // Otherwise, scroll to next item
+                    nextWork(worksInnerId, 1);
+                }
+            }, 3000); // Change slide every 5 seconds
+        }
+
+        // Pause auto-scroll on hover
+        function setupAutoScrollPause(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const carousel = worksInner.parentElement;
+
+            carousel.addEventListener('mouseenter', () => {
+                if (autoScrollIntervals[worksInnerId]) {
+                    clearInterval(autoScrollIntervals[worksInnerId]);
+                }
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                startAutoScroll(worksInnerId);
+            });
+        }
 
         function initCarousel(worksInnerId) {
             if (!carouselStates[worksInnerId]) {
@@ -1235,6 +1288,9 @@
             // Добавляем transition для плавности
             worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
 
+            // Setup auto-scroll pause on hover
+            setupAutoScrollPause(worksInnerId);
+
             // Touch events для мобильных устройств
             worksInner.addEventListener('touchstart', (e) => {
                 const state = carouselStates[worksInnerId];
@@ -1248,6 +1304,11 @@
                 // Отключаем transition во время драга
                 worksInner.style.transition = 'none';
                 cancelAnimationFrame(state.animationID);
+
+                // Pause auto-scroll during interaction
+                if (autoScrollIntervals[worksInnerId]) {
+                    clearInterval(autoScrollIntervals[worksInnerId]);
+                }
             });
 
             worksInner.addEventListener('touchmove', (e) => {
@@ -1300,6 +1361,9 @@
 
                 // Корректируем позицию после инерции
                 snapToNearestItem(worksInnerId);
+
+                // Resume auto-scroll after interaction
+                startAutoScroll(worksInnerId);
             });
 
             // Mouse events для десктопа
@@ -1315,6 +1379,11 @@
                 worksInner.style.transition = 'none';
                 cancelAnimationFrame(state.animationID);
                 e.preventDefault();
+
+                // Pause auto-scroll during interaction
+                if (autoScrollIntervals[worksInnerId]) {
+                    clearInterval(autoScrollIntervals[worksInnerId]);
+                }
             });
 
             document.addEventListener('mousemove', (e) => {
@@ -1362,6 +1431,9 @@
                 }
 
                 snapToNearestItem(worksInnerId);
+
+                // Resume auto-scroll after interaction
+                startAutoScroll(worksInnerId);
             });
 
             // Функция для привязки к ближайшему элементу
@@ -1384,8 +1456,6 @@
                 updateCarouselControls(worksInnerId);
             }
         }
-
-
 
         // Функция для обновления состояния кнопок управления
         function updateCarouselControls(worksInnerId) {
@@ -1628,6 +1698,10 @@
             // Initialize carousels
             initCarousel('newPublicationsWorks');
             initCarousel('popularArtistsWorks');
+
+            // Start auto-scrolling for both carousels
+            startAutoScroll('newPublicationsWorks');
+            startAutoScroll('popularArtistsWorks');
 
             // Adapt carousels on window resize
             window.addEventListener('resize', () => {
