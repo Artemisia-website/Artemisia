@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artemisia</title>
+    <title>Artemisia - Комиксы</title>
     <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
     <link rel="stylesheet" href="Artist.css">
 
@@ -44,16 +44,11 @@
             align-items: center;
             justify-content: space-between;
             gap: 15px;
-
             z-index: 1000;
-
             position: fixed;
-            /* Меняем на фиксированное позиционирование */
             top: 0;
             left: 0;
-
         }
-
 
         .header-left {
             display: flex;
@@ -115,7 +110,6 @@
                 height: 36px;
             }
         }
-
 
         /* New Search Styles */
         .search-container {
@@ -268,8 +262,6 @@
             }
         }
 
-
-
         .no-results {
             padding: 20px;
             text-align: center;
@@ -410,14 +402,12 @@
             pointer-events: auto;
         }
 
-        /* Заменить стиль для body.menu-open */
         body.menu-open {
             overflow: hidden;
             position: fixed;
             width: 100%;
             height: 100%;
         }
-
 
         .menu {
             font-size: 18px;
@@ -558,6 +548,7 @@
             margin: 20px 20px 0 0;
             display: flex;
             justify-content: flex-end;
+            z-index: 500;
         }
 
         .filters-button {
@@ -573,12 +564,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
         }
 
-        .filters-button:hover {
-            background: #ffdd33;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        .filters-button svg {
+            width: 16px;
+            height: 16px;
+            transition: all 0.3s ease;
         }
 
         .filters-dropdown {
@@ -630,104 +622,23 @@
             }
         }
 
-        /* Filters Styles */
-        .filters-container {
-            position: relative;
-            margin: 20px 20px 0 0;
+        /* Comic Profile Styles */
+        .comic-section {
             display: flex;
-            justify-content: flex-end;
-            z-index: 500;
-            /* Добавляем z-index для правильного отображения */
-        }
-
-        .filters-button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #ffcc00;
-            color: #262626;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 16px;
-            /* Добавляем явный размер шрифта */
-        }
-
-        .filters-button svg {
-            width: 16px;
-            height: 16px;
-            transition: all 0.3s ease;
-        }
-
-        /* Адаптация для планшетов */
-        @media (max-width: 768px) {
-            .filters-container {
-                margin: 15px 15px 0 0;
-            }
-
-            .filters-button {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-
-            .filters-button svg {
-                width: 14px;
-                height: 14px;
-            }
-        }
-
-        /* Адаптация для мобильных */
-        @media (max-width: 480px) {
-            .filters-container {
-                margin: 10px 10px 0 0;
-            }
-
-            .filters-button {
-                padding: 6px 12px;
-                font-size: 12px;
-                gap: 6px;
-            }
-
-            .filters-button svg {
-                width: 12px;
-                height: 12px;
-            }
-
-            .filters-dropdown {
-                width: 160px;
-                /* Уменьшаем ширину выпадающего меню */
-                top: 40px;
-                /* Корректируем позицию */
-            }
-
-            .filters-dropdown a {
-                padding: 10px 15px;
-                font-size: 12px;
-            }
-        }
-
-        /* Artist Profile Styles */
-        .profile-section {
-            display: flex;
-            align-items: center;
+            align-items: flex-start;
             padding: 40px 20px;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 30px auto 0;
             width: 100%;
             background-color: #2d2d2d;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            margin-top: 30px;
             transition: all 0.5s ease;
             opacity: 1;
             transform: translateY(0);
         }
 
-        .profile-section.hidden {
+        .comic-section.hidden {
             opacity: 0;
             transform: translateY(-20px);
             height: 0;
@@ -738,489 +649,237 @@
             border: none;
         }
 
-        .avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-right: 16px;
+        .comic-cover {
+            width: 250px;
+            height: 350px;
             object-fit: cover;
-            border: 4px solid #ffcc00;
-            box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.4),
-                0 0 0 8px rgba(45, 45, 45, 0.7);
-            filter: brightness(1.05) contrast(1.1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .avatar-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
+            border-radius: 10px;
             margin-right: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
         }
 
-        .avatar-border {
-            position: absolute;
-            width: calc(100% + 12px);
-            height: calc(100% + 12px);
-            border-radius: 50%;
-            background: linear-gradient(45deg,
-                    #ff0000, #ff7300, #fffb00, #48ff00,
-                    #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 400% 400%;
-            animation: gradientBorder 8s ease infinite;
-            z-index: 1;
-            filter: blur(5px);
-            opacity: 0.7;
-        }
-
-        .avatar-border::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 50%;
-            background: linear-gradient(45deg,
-                    #ff0000, #ff7300, #fffb00, #48ff00,
-                    #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 400% 400%;
-            animation: gradientBorder 8s ease infinite;
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0.5;
-        }
-
-        @keyframes gradientBorder {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-
-
-        .avatar:hover {
+        .comic-cover:hover {
             transform: scale(1.03);
         }
 
-        /* Стили для кнопки профиля */
-        .profile-button {
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ffcc00;
-            color: #262626;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            z-index: 3;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .avatar-container:hover .profile-button {
-            opacity: 1;
-            bottom: -15px;
-        }
-
-        .avatar-container {
-            cursor: pointer;
-            position: relative;
-        }
-
-        .avatar-container:hover .avatar {
-            transform: scale(1.03);
-        }
-
-        @media (max-width: 768px) {
-
-            .profile-button {
-                font-size: 0.8rem;
-                padding: 5px 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .profile-button {
-                font-size: 0.7rem;
-                padding: 4px 10px;
-                opacity: 1;
-                bottom: -10px;
-            }
-        }
-
-        /* Адаптация для мобильных устройств */
-        @media (max-width: 768px) {
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 15px;
-                min-height: auto;
-            }
-
-            .avatar-container {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
-            .profile-info {
-                padding: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .avatar-container {
-                width: 120px;
-                height: 120px;
-            }
-
-            .avatar {
-                width: 120px;
-                height: 120px;
-                border-width: 3px;
-            }
-        }
-
-        .profile-info {
+        .comic-info {
             flex: 1;
         }
 
-        .profile-info h1 {
+        .comic-info h1 {
             font-size: 2em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #ffcc00;
             word-break: break-word;
         }
 
-        .profile-info a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: block;
-            margin-bottom: 10px;
-            transition: opacity 0.3s;
-            word-break: break-all;
-        }
-
-        .profile-info a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        .profile-info p {
-            font-size: 1.1em;
-            color: #e0e0e0;
-            word-break: break-word;
-        }
-
-        .favorite-works {
-            text-align: center;
-            padding: 30px 0 20px;
-            width: 100%;
-            color: white;
-            font-size: 2em;
-            margin-top: 30px;
-            transition: all 0.5s ease;
-            word-break: break-word;
-        }
-
-        .favorite-works.hidden {
-            opacity: 0;
-            height: 0;
-            padding: 0;
-            margin: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        /* Works Carousel Styles */
-        .works-carousel {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            padding: 0 60px;
-            transition: all 0.5s ease;
-        }
-
-        .works-carousel.hidden {
-            opacity: 0;
-            height: 0;
-            padding: 0;
-            margin: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .works-inner {
+        .comic-meta {
             display: flex;
-            transition: transform 0.5s ease;
-            will-change: transform;
-            padding: 20px 0;
+            flex-wrap: wrap;
             gap: 20px;
+            margin-bottom: 20px;
         }
 
-        .work-thumb {
-            width: 400px;
-            height: 260px;
-            object-fit: scale-down;
-            border-radius: 10px;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .work-thumb-1 {
-            width: 300px;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 10px;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .work-thumb-2 {
-            width: 300px;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 10px;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .work-thumb-3 {
-            width: 200px;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 10px;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .work-thumb-1:hover,
-        .work-thumb:hover,
-        .work-thumb-2:hover,
-        .work-thumb-3:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .works-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 24px;
-            z-index: 10;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+        .meta-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
+            gap: 8px;
         }
 
-        .works-control:hover {
-            background: rgba(0, 0, 0, 0.9);
+        .meta-icon {
+            width: 20px;
+            height: 20px;
+            opacity: 0.8;
         }
 
-        .works-control.prev {
-            left: 10px;
+        .comic-description {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            word-break: break-word;
         }
 
-        .works-control.next {
-            right: 10px;
+        .comic-genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        /* Show Works Button */
-        .show-works-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 30px;
-            background: #ffcc00;
+        .genre-tag {
+            background-color: #3a3a3a;
+            color: #ffcc00;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .comic-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .comic-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffcc00;
             color: #262626;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 25px;
-            transition: all 0.5s ease;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 90%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            transition: all 0.3s ease;
         }
 
-        .show-works-btn.hidden {
-            opacity: 0;
-            height: 0;
-            padding: 0;
-            margin: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .show-works-btn:hover {
-            background: #ffdd33;
+        .comic-link:hover {
+            background-color: #ffdd33;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            overflow-y: auto;
-            z-index: 1000;
-            padding: 20px;
+        .comic-link-icon {
+            width: 18px;
+            height: 18px;
         }
 
-        .modal-header {
-            color: white;
-            text-align: center;
-            padding: 30px 20px 20px;
-            font-size: 24px;
-        }
-
-        .modal-content {
+        /* Comic Chapters */
+        .chapters-section {
             max-width: 1200px;
-            margin: 0 auto 40px;
+            margin: 30px auto;
             padding: 0 20px;
+        }
+
+        .chapters-title {
+            font-size: 1.8em;
+            color: #ffcc00;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3a3a3a;
+        }
+
+        .chapters-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        .modal-img {
+        .chapter-card {
+            background-color: #2d2d2d;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .chapter-cover {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        .chapter-info {
+            padding: 15px;
         }
 
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close-btn:hover,
-        .close-btn:focus {
+        .chapter-title {
+            font-size: 1.2em;
+            margin-bottom: 8px;
             color: #ffcc00;
-            text-decoration: none;
-            cursor: pointer;
         }
 
-        /* Image Modal Styles */
-        .image-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1100;
-            overflow: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .image-modal-content {
+        .chapter-meta {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100%;
-            padding: 20px 0;
+            justify-content: space-between;
+            color: #aaa;
+            font-size: 0.9em;
+            margin-bottom: 10px;
         }
 
-        .image-modal-img {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-            animation: zoom 0.3s;
-            cursor: zoom-out;
+        .chapter-link {
+            display: inline-block;
+            background-color: #3a3a3a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
         }
 
-        .image-close-btn {
-            position: fixed;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1101;
+        .chapter-link:hover {
+            background-color: #ffcc00;
+            color: #262626;
         }
 
-        .image-close-btn:hover {
+        /* Similar Comics */
+        .similar-comics {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .similar-title {
+            font-size: 1.8em;
             color: #ffcc00;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3a3a3a;
         }
 
-        @keyframes zoom {
-            from {
-                transform: scale(0);
-            }
+        .similar-list {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #ffcc00 #3a3a3a;
+        }
 
-            to {
-                transform: scale(1);
-            }
+        .similar-list::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .similar-list::-webkit-scrollbar-track {
+            background: #3a3a3a;
+            border-radius: 10px;
+        }
+
+        .similar-list::-webkit-scrollbar-thumb {
+            background-color: #ffcc00;
+            border-radius: 10px;
+        }
+
+        .similar-comic {
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .similar-cover {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .similar-cover:hover {
+            transform: scale(1.05);
+        }
+
+        .similar-name {
+            font-size: 0.9em;
+            color: white;
+            word-break: break-word;
         }
 
         /* Footer Styles */
@@ -1378,398 +1037,125 @@
             visibility: visible;
         }
 
-        /* Social Links */
-        .social-links {
-            --icon-size: 2rem;
-            --icon-gap: 0.75rem;
-            --hover-scale: 1.15;
-            --active-scale: 0.95;
-            --transition-duration: 0.2s;
-
-            display: flex;
-            gap: var(--icon-gap);
-            margin: 1rem 0 0;
-            padding: 0;
-            list-style: none;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .social-link {
-            display: block;
-            width: var(--icon-size);
-            height: var(--icon-size);
-            position: relative;
-            border-radius: 50%;
-            overflow: hidden;
-            transform: scale(1);
-            transition:
-                transform var(--transition-duration) ease,
-                filter var(--transition-duration) ease;
-            will-change: transform;
-            filter: grayscale(20%) brightness(0.9);
-        }
-
-        .social-icon {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .social-link:hover {
-            transform: scale(var(--hover-scale));
-            filter: grayscale(0%) brightness(1.05);
-            z-index: 1;
-        }
-
-        .social-link:active {
-            transform: scale(var(--active-scale));
-        }
-
-        /* Profile Link */
-        .profile-link {
-            color: #ffcc00;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-link:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .profile-link-icon {
-            width: 20px;
-            height: 20px;
-            margin-left: 8px;
-            filter: brightness(0.9);
-        }
-
         /* Responsive Styles */
         @media (max-width: 1024px) {
-            .work-thumb {
-                width: 220px;
-                height: 220px;
-            }
-
-            .work-thumb-1 {
-                width: 300px;
-                height: 220px;
-            }
-
-            .work-thumb-2 {
-                width: 220px;
-                height: 220px;
-            }
-
-            .work-thumb-3 {
-                width: 220px;
-                height: 220px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .footer-links {
-                gap: 25px;
+            .comic-cover {
+                width: 200px;
+                height: 280px;
             }
         }
 
         @media (max-width: 768px) {
-            .profile-section {
+            .comic-section {
                 flex-direction: column;
                 align-items: center;
-                text-align: center;
                 padding: 30px 15px;
             }
 
-            .avatar {
-                width: 150px;
-                height: 150px;
-                margin: 0 0 20px 0;
+            .comic-cover {
+                width: 180px;
+                height: 250px;
+                margin-right: 0;
+                margin-bottom: 20px;
             }
 
-            .profile-info h1 {
+            .comic-info h1 {
                 font-size: 1.8em;
-            }
-
-            .profile-info a {
-                font-size: 1em;
-            }
-
-            .profile-info p {
-                font-size: 1em;
-            }
-
-            .favorite-works {
-                font-size: 1.8em;
-                padding: 25px 0 15px;
-            }
-
-            .modal-header {
-                font-size: 20px;
-                padding: 20px 15px;
-            }
-
-            .modal-content {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 15px;
-            }
-
-            .modal-img {
-                height: 200px;
-            }
-
-            .works-carousel {
-                padding: 0 50px;
-            }
-
-            .work-thumb {
-                width: 180px;
-                height: 180px;
-            }
-
-            .work-thumb-1 {
-                width: 260px;
-                height: 180px;
-            }
-
-            .work-thumb-2 {
-                width: 180px;
-                height: 180px;
-            }
-
-            .work-thumb-3 {
-                width: 180px;
-                height: 180px;
-            }
-
-            .works-control {
-                width: 35px;
-                height: 35px;
-                font-size: 20px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
                 text-align: center;
-                padding-bottom: 30px;
             }
 
-            .footer-section {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
+            .comic-meta {
                 justify-content: center;
-                gap: 20px 30px;
             }
 
-            .footer-link {
-                font-size: 0.95rem;
+            .comic-description {
+                font-size: 1em;
+                text-align: center;
             }
 
-            .update-text {
-                font-size: 0.95rem;
-            }
-
-            .back-to-top-btn {
-                width: 40px;
-                height: 40px;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .social-links {
+            .comic-genres {
                 justify-content: center;
+            }
+
+            .comic-links {
+                justify-content: center;
+            }
+
+            .chapters-list {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
         @media (max-width: 480px) {
-            .profile-section {
+            .comic-section {
                 padding: 20px 10px;
             }
 
-            .avatar {
-                width: 120px;
-                height: 120px;
-                border-width: 3px;
+            .comic-cover {
+                width: 150px;
+                height: 210px;
             }
 
-            .profile-info h1 {
+            .comic-info h1 {
                 font-size: 1.5em;
-                margin-bottom: 8px;
             }
 
-            .profile-info a {
-                font-size: 0.9em;
-                margin-bottom: 8px;
-            }
-
-            .profile-info p {
-                font-size: 0.9em;
-            }
-
-            .favorite-works {
-                font-size: 1.5em;
-                padding: 20px 0 10px;
-            }
-
-            .modal-header {
-                font-size: 18px;
-                padding: 15px 10px;
-            }
-
-            .modal-content {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            .comic-meta {
                 gap: 10px;
+                justify-content: flex-start;
             }
 
-            .modal-img {
-                height: 150px;
+            .comic-description {
+                font-size: 0.9em;
+                text-align: left;
             }
 
-            .close-btn {
-                font-size: 30px;
-                right: 20px;
-            }
-
-            .works-carousel {
-                padding: 0 40px;
-            }
-
-            .work-thumb {
-                width: 150px;
-                height: 150px;
-            }
-
-            .work-thumb-1 {
-                width: 230px;
-                height: 150px;
-            }
-
-            .work-thumb-2 {
-                width: 150px;
-                height: 150px;
-            }
-
-            .work-thumb-3 {
-                width: 150px;
-                height: 150px;
-            }
-
-            .works-control {
-                width: 30px;
-                height: 30px;
-                font-size: 18px;
-            }
-
-            .site-footer {
-                padding: 30px 15px 20px;
-            }
-
-            .footer-links {
+            .comic-links {
                 flex-direction: column;
-                gap: 15px;
+                align-items: center;
             }
 
-            .footer-link {
-                font-size: 0.9rem;
-                padding: 4px 0;
+            .chapters-list {
+                grid-template-columns: 1fr;
             }
 
-            .update-text {
-                font-size: 0.9rem;
+            .similar-comic {
+                min-width: 120px;
             }
 
-            .footer-logo {
-                height: 30px;
-            }
-
-            .social-link {
-                font-size: 1.2rem;
-            }
-
-            .social-links {
-                gap: 12px;
-            }
-
-            .image-modal-img {
-                max-width: 95%;
-                max-height: 85vh;
-            }
-
-            .image-close-btn {
-                font-size: 30px;
-                right: 20px;
-                top: 15px;
-            }
-
-            .show-works-btn {
-                padding: 8px 20px;
-                font-size: 14px;
-                margin: 10px auto;
-                white-space: normal;
-                max-width: 95%;
-            }
-
-            .show-works-btn:hover {
-                transform: none;
-                background: #ffcc00;
-            }
-
-            .show-works-btn:active {
-                background: #ffdd33;
-                transform: translateY(1px);
+            .similar-cover {
+                width: 120px;
+                height: 160px;
             }
         }
 
-        /* Добавим начальные стили и анимации */
-        .profile-section,
-        .favorite-works,
-        .works-carousel,
-        .show-works-btn {
+        /* Animation Styles */
+        .comic-section,
+        .chapters-section,
+        .similar-comics {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .profile-section.visible,
-        .favorite-works.visible,
-        .works-carousel.visible,
-        .show-works-btn.visible {
+        .comic-section.visible,
+        .chapters-section.visible,
+        .similar-comics.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Модифицируем скрытие элементов */
-        .profile-section.hidden {
+        .chapter-card,
+        .similar-comic {
             opacity: 0;
-            transform: translateY(-20px);
-            pointer-events: none;
-            overflow: hidden;
+            transform: translateY(20px);
             transition: all 0.4s ease;
         }
 
-        /* Анимация для модальных окон */
-        .modal-content img {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: all 0.3s ease;
-        }
-
-        .modal-content img.visible {
+        .chapter-card.visible,
+        .similar-comic.visible {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -1794,8 +1180,8 @@
                             d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
                     </svg>
                 </div>
-                <input type="text" id="searchInput" placeholder="Поиск художников..." autocomplete="off">
-                <button class="search-btn" onclick="searchArtists()">
+                <input type="text" id="searchInput" placeholder="Поиск комиксов..." autocomplete="off">
+                <button class="search-btn" onclick="searchComics()">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="#262626" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
@@ -1863,7 +1249,7 @@
                 </ul>
             </li>
 
-            <li><a href="#">
+            <li><a href="Comics.html">
                     <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
                     Комиксы
                 </a>
@@ -1928,251 +1314,244 @@
                 Фильтры
             </button>
             <div class="filters-dropdown" id="filtersDropdown">
-                <a href="#" onclick="applyFilter('all', event)" class="active-filter">Все стили</a>
-                <a href="#" onclick="applyFilter('prem', event)">Prem Artist</a>
+                <a href="#" onclick="applyFilter('all', event)" class="active-filter">Все жанры</a>
+                <a href="#" onclick="applyFilter('fantasy', event)">Фэнтези</a>
+                <a href="#" onclick="applyFilter('sci-fi', event)">Научная фантастика</a>
+                <a href="#" onclick="applyFilter('horror', event)">Хоррор</a>
+                <a href="#" onclick="applyFilter('romance', event)">Романтика</a>
+                <a href="#" onclick="applyFilter('adventure', event)">Приключения</a>
             </div>
         </div>
     </section>
 
-    <!-- Дизайнеры -->
-    <section>
+    <!-- Основной контент -->
+    <main>
+        <!-- Пример комикса 1 -->
+        <section class="comic-section" data-genre="fantasy adventure" data-id="shadow-realms">
+            <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Shadow Realms" class="comic-cover">
+            <div class="comic-info">
+                <h1>Shadow Realms</h1>
 
-        <!-- Алексия -->
-        <section id="Alexia">
-            <section class="profile-section" data-style="Дизайн" data-prem="true"
-                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
-                <div class="avatar-container">
-                    <div class="avatar-border"></div>
-                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" alt="Аватар"
-                        class="avatar">
-
-                </div>
-
-                <div class="profile-info">
-                    <h1>Алексия</h1>
-                    <a href="https://t.me/" class="profile-link">
-                        @Ha0ruka
-                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                    </a>
-                    <p>Специальность: Дизайн </p>
-
-
-                    <div class="social-links">
-                        <a href="https://t.me/A0lexyaa0" class="social-link" target="_blank" title="Telegram">
-                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
-                        </a>
+                <div class="comic-meta">
+                    <div class="meta-item">
+                        <img src="https://i.postimg.cc/8zG7WYHx/author-icon.png" alt="Автор" class="meta-icon">
+                        <span>Алексей Воронов</span>
+                    </div>
+                    <div class="meta-item">
+                        <img src="https://i.postimg.cc/3NJq8YRy/calendar-icon.png" alt="Дата" class="meta-icon">
+                        <span>2023 - настоящее время</span>
+                    </div>
+                    <div class="meta-item">
+                        <img src="https://i.postimg.cc/8CJXbKx3/status-icon.png" alt="Статус" class="meta-icon">
+                        <span>Продолжается</span>
                     </div>
                 </div>
-            </section>
 
-            <h2 class="favorite-works">Публикации автора</h2>
-            <div class="works-carousel" id="artist1Carousel">
-                <div class="works-inner" id="artist1Works">
-                    <img src="https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/NfH3WCXH/photo-5244699232638725579-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/Cxp3YCC6/photo-5244699232638725580-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="work-thumb-2"
-                        alt="">
-                    <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="work-thumb-2"
-                        alt="">
-                    <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="work-thumb-2"
-                        alt="">
-                    <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="work-thumb-2"
-                        alt="">
-                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="work-thumb-2"
-                        alt="">
+                <div class="comic-genres">
+                    <span class="genre-tag">Фэнтези</span>
+                    <span class="genre-tag">Приключения</span>
+                    <span class="genre-tag">Темное фэнтези</span>
                 </div>
-                <button class="works-control prev" onclick="prevWork('artist1Works')">&#10094;</button>
-                <button class="works-control next" onclick="nextWork('artist1Works')">&#10095;</button>
-            </div>
-            <button class="show-works-btn" onclick="openModal('modal1')">Ознакомиться со всеми работами</button>
 
-            <!-- Модальное окно для второго художника -->
-            <div id="modal1" class="modal">
-                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-                <div class="modal-header">
-                    <h2>Галерея работ</h2>
-                </div>
-                <div class="modal-content">
-                    <img src="https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/NfH3WCXH/photo-5244699232638725579-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/Cxp3YCC6/photo-5244699232638725580-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="modal-img" alt="">
+                <p class="comic-description">
+                    В мире, где тени оживают, а древние боги пробуждаются, молодой охотник на демонов обнаруживает, что
+                    сам является частью древнего пророчества. Его путешествие через забытые королевства и проклятые
+                    земли раскроет тайны его происхождения и определит судьбу всего мира.
+                </p>
 
+                <div class="comic-links">
+                    <a href="#" class="comic-link" onclick="readComic('shadow-realms')">
+                        <img src="https://i.postimg.cc/8zG7WYHx/author-icon.png" alt="Читать" class="comic-link-icon">
+                        Читать
+                    </a>
+                    <a href="https://t.me/shadowrealms_comic" class="comic-link" target="_blank">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="comic-link-icon">
+                        Telegram
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Rikoto -->
-        <section id="3">
-            <section class="profile-section" data-style="Дизайн">
-                <img src="https://i.postimg.cc/6qvPXv17/photo-5305270117032127745-y.jpg" alt="Аватар" class="avatar">
-                <div class="profile-info">
-                    <h1>Rikoto </h1>
-                    <a href="https://t.me/riikoto" class="profile-link">
-                        @riikoto
-                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                    </a>
-                    <p>Специальность: Дизайн </p>
-                    <div class="social-links">
-                        <a href="https://t.me/portriikoto" class="social-link" target="_blank" title="Telegram">
-                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
-                        </a>
-                        <a href="https://pin.it/12X1xzRJa" class="social-link" target="_blank" rel="noopener noreferrer"
-                            aria-label="Pin">
-                            <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
-                                height="32" loading="lazy" class="social-icon">
-                        </a>
-
-                        <!-- ТТ -->
-                        <a href="https://www.tiktok.com/@riikoto?_t=ZS-8wekeUsZwAr&_r=1" class="social-link"
-                            target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT" width="32"
-                                height="32" loading="lazy" class="social-icon">
-                        </a>
-
+        <!-- Главы комикса -->
+        <section class="chapters-section">
+            <h2 class="chapters-title">Главы</h2>
+            <div class="chapters-list">
+                <div class="chapter-card">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Глава 1" class="chapter-cover">
+                    <div class="chapter-info">
+                        <h3 class="chapter-title">Глава 1: Пробуждение</h3>
+                        <div class="chapter-meta">
+                            <span>12.05.2023</span>
+                            <span>24 стр.</span>
+                        </div>
+                        <a href="#" class="chapter-link" onclick="readChapter('shadow-realms', 1)">Читать</a>
                     </div>
                 </div>
-            </section>
 
-            <h2 class="favorite-works">Публикации автора</h2>
-            <div class="works-carousel" id="artist3Carousel">
-                <div class="works-inner" id="artist3Works">
-                    <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/SKSHMjj5/photo-5305270117032127730-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/xd6hyYzd/photo-5305270117032127731-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/hGvpnmXS/photo-5305270117032127748-y.jpg" class="work-thumb-2"
-                        alt="">
-                    <img src="https://i.postimg.cc/dV44g6tH/photo-5305270117032127749-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/6p9MHgw4/photo-5305270117032127751-y.jpg" class="work-thumb-2"
-                        alt="">
-                    <img src="https://i.postimg.cc/8PdymN8V/photo-5305270117032127752-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/rpHgwp45/photo-5305270117032127758-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/C1dtctGs/photo-5330442873109346267-y.jpg" class="work-thumb-1"
-                        alt="">
-
+                <div class="chapter-card">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Глава 2" class="chapter-cover">
+                    <div class="chapter-info">
+                        <h3 class="chapter-title">Глава 2: Тени прошлого</h3>
+                        <div class="chapter-meta">
+                            <span>26.06.2023</span>
+                            <span>22 стр.</span>
+                        </div>
+                        <a href="#" class="chapter-link" onclick="readChapter('shadow-realms', 2)">Читать</a>
+                    </div>
                 </div>
-                <button class="works-control prev" onclick="prevWork('artist3Works')">&#10094;</button>
-                <button class="works-control next" onclick="nextWork('artist3Works')">&#10095;</button>
-            </div>
-            <button class="show-works-btn" onclick="openModal('modal3')">Ознакомиться со всеми работами</button>
 
-            <!-- Modal -->
-            <div id="modal3" class="modal">
-                <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
-                <div class="modal-header">
-                    <h2>Галерея работ</h2>
+                <div class="chapter-card">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Глава 3" class="chapter-cover">
+                    <div class="chapter-info">
+                        <h3 class="chapter-title">Глава 3: Врата Аббадона</h3>
+                        <div class="chapter-meta">
+                            <span>15.08.2023</span>
+                            <span>28 стр.</span>
+                        </div>
+                        <a href="#" class="chapter-link" onclick="readChapter('shadow-realms', 3)">Читать</a>
+                    </div>
                 </div>
-                <div class="modal-content">
-                    <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/SKSHMjj5/photo-5305270117032127730-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/xd6hyYzd/photo-5305270117032127731-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/hGvpnmXS/photo-5305270117032127748-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/dV44g6tH/photo-5305270117032127749-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/6p9MHgw4/photo-5305270117032127751-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/8PdymN8V/photo-5305270117032127752-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/rpHgwp45/photo-5305270117032127758-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/C1dtctGs/photo-5330442873109346267-y.jpg" class="modal-img" alt="">
 
-
+                <div class="chapter-card">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Глава 3" class="chapter-cover">
+                    <div class="chapter-info">
+                        <h3 class="chapter-title">Глава 3: Врата Аббадона</h3>
+                        <div class="chapter-meta">
+                            <span>15.08.2023</span>
+                            <span>28 стр.</span>
+                        </div>
+                        <a href="#" class="chapter-link" onclick="readChapter('shadow-realms', 3)">Читать</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- coenabi -->
-        <section id="2">
-            <section class="profile-section" data-style="Веб-дизайн">
-                <img src="https://i.postimg.cc/6Q7fPCjP/photo-5287398650739285319-y.jpg" alt="Аватар" class="avatar">
-                <div class="profile-info">
-                    <h1> coenabi</h1>
-                    <a href="https://t.me/@rayahrr" class="profile-link">
-                        @rayahrr
-                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                    </a>
-                    <p>Специальность: Веб-дизайн </p>
-                    <div class="social-links">
-                        <a href="https://t.me/coenabi" class="social-link" target="_blank" title="Telegram">
-                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
-                        </a>
-
-                    </div>
+        <!-- Похожие комиксы -->
+        <section class="similar-comics">
+            <h2 class="similar-title">Похожие комиксы</h2>
+            <div class="similar-list">
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Chronicles of Eld" class="similar-cover">
+                    <p class="similar-name">Chronicles of Eld</p>
                 </div>
-            </section>
-
-            <h2 class="favorite-works">Публикации автора</h2>
-            <div class="works-carousel" id="artist2Carousel">
-                <div class="works-inner" id="artist2Works">
-                    <img src="https://i.postimg.cc/bJNXtyz8/photo-5244777448288154711-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/gjnfggXT/photo-5244777448288154710-y.jpg" class="work-thumb-3"
-                        alt="">
-                    <img src="https://i.postimg.cc/YSxK0GBb/photo-5244777448288154712-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/Bv3fJ5kj/photo-5244777448288154713-y.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/Y9X5N59F/photo-5244777448288154714-x.jpg" class="work-thumb-1"
-                        alt="">
-                    <img src="https://i.postimg.cc/K8ByXpqX/photo-5244777448288154715-y.jpg" class="work-thumb-1"
-                        alt="">
-
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Moonlight Sonata" class="similar-cover">
+                    <p class="similar-name">Moonlight Sonata</p>
                 </div>
-                <button class="works-control prev" onclick="prevWork('artist2Works')">&#10094;</button>
-                <button class="works-control next" onclick="nextWork('artist2Works')">&#10095;</button>
-            </div>
-            <button class="show-works-btn" onclick="openModal('modal2')">Ознакомиться со всеми работами</button>
-
-            <!-- Modal -->
-            <div id="modal2" class="modal">
-                <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
-                <div class="modal-header">
-                    <h2>Галерея работ</h2>
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Demon's Blood" class="similar-cover">
+                    <p class="similar-name">Demon's Blood</p>
                 </div>
-                <div class="modal-content">
-                    <img src="https://i.postimg.cc/bJNXtyz8/photo-5244777448288154711-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/gjnfggXT/photo-5244777448288154710-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/YSxK0GBb/photo-5244777448288154712-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/Bv3fJ5kj/photo-5244777448288154713-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/Y9X5N59F/photo-5244777448288154714-x.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/K8ByXpqX/photo-5244777448288154715-y.jpg" class="modal-img" alt="">
-
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="The Last Mage" class="similar-cover">
+                    <p class="similar-name">The Last Mage</p>
+                </div>
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Cursed Crown" class="similar-cover">
+                    <p class="similar-name">Cursed Crown</p>
                 </div>
             </div>
         </section>
 
+        <!-- Пример комикса 2 -->
+        <section class="comic-section" data-genre="sci-fi" data-id="neon-dreams">
+            <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Neon Dreams" class="comic-cover">
+            <div class="comic-info">
+                <h1>Neon Dreams</h1>
 
+                <div class="comic-meta">
+                    <div class="meta-item">
+                        <img src="https://i.postimg.cc/8zG7WYHx/author-icon.png" alt="Автор" class="meta-icon">
+                        <span>Мария Кибер</span>
+                    </div>
+                    <div class="meta-item">
+                        <img src="https://i.postimg.cc/3NJq8YRy/calendar-icon.png" alt="Дата" class="meta-icon">
+                        <span>2022 - настоящее время</span>
+                    </div>
+                    <div class="meta-item">
+                        <img src="https://i.postimg.cc/8CJXbKx3/status-icon.png" alt="Статус" class="meta-icon">
+                        <span>Продолжается</span>
+                    </div>
+                </div>
 
+                <div class="comic-genres">
+                    <span class="genre-tag">Киберпанк</span>
+                    <span class="genre-tag">Научная фантастика</span>
+                    <span class="genre-tag">Детектив</span>
+                </div>
 
-    </section>
+                <p class="comic-description">
+                    В неоновых улицах мегаполиса будущего хакер-одиночка случайно получает доступ к запрещенным данным
+                    корпорации "АркТек". Теперь за ним охотится не только полиция, но и наемные убийцы, и единственный
+                    способ выжить - раскрыть правду о проекте "Сновидение".
+                </p>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="image-modal">
-        <span class="image-close-btn" onclick="closeImageModal()">&times;</span>
-        <div class="image-modal-content">
-            <img id="expandedImg" class="image-modal-img" src="" alt="Expanded Image">
-        </div>
-    </div>
+                <div class="comic-links">
+                    <a href="#" class="comic-link" onclick="readComic('neon-dreams')">
+                        <img src="https://i.postimg.cc/8zG7WYHx/author-icon.png" alt="Читать" class="comic-link-icon">
+                        Читать
+                    </a>
+                    <a href="https://t.me/neondreams_comic" class="comic-link" target="_blank">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="comic-link-icon">
+                        Telegram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Главы комикса -->
+        <section class="chapters-section">
+            <h2 class="chapters-title">Главы</h2>
+            <div class="chapters-list">
+                <div class="chapter-card">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Глава 1" class="chapter-cover">
+                    <div class="chapter-info">
+                        <h3 class="chapter-title">Глава 1: Пробуждение</h3>
+                        <div class="chapter-meta">
+                            <span>12.05.2023</span>
+                            <span>24 стр.</span>
+                        </div>
+                        <a href="#" class="chapter-link" onclick="readChapter('neon-dreams', 1)">Читать</a>
+                    </div>
+                </div>
+
+                <div class="chapter-card">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Глава 2" class="chapter-cover">
+                    <div class="chapter-info">
+                        <h3 class="chapter-title">Глава 2: Тени прошлого</h3>
+                        <div class="chapter-meta">
+                            <span>26.06.2023</span>
+                            <span>22 стр.</span>
+                        </div>
+                        <a href="#" class="chapter-link" onclick="readChapter('neon-dreams', 2)">Читать</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Похожие комиксы -->
+        <section class="similar-comics">
+            <h2 class="similar-title">Похожие комиксы</h2>
+            <div class="similar-list">
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Cyber Ghost" class="similar-cover">
+                    <p class="similar-name">Cyber Ghost</p>
+                </div>
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Neon City" class="similar-cover">
+                    <p class="similar-name">Neon City</p>
+                </div>
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Data Thief" class="similar-cover">
+                    <p class="similar-name">Data Thief</p>
+                </div>
+                <div class="similar-comic">
+                    <img src="https://i.postimg.cc/3wZv0YQ6/comic1.jpg" alt="Circuit Breaker" class="similar-cover">
+                    <p class="similar-name">Circuit Breaker</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -2198,7 +1577,6 @@
         </div>
     </footer>
 
-
     <!-- Стрлека вверх -->
     <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
@@ -2215,7 +1593,6 @@
             const body = document.body;
             const searchInput = document.getElementById('searchInput');
 
-            // Сохраняем позицию прокрутки перед открытием
             if (!body.classList.contains('menu-open')) {
                 body.style.top = `-${window.scrollY}px`;
             }
@@ -2226,7 +1603,6 @@
             body.classList.toggle('menu-open');
             searchInput.disabled = body.classList.contains('menu-open');
 
-            // Восстанавливаем позицию прокрутки при закрытии
             if (!body.classList.contains('menu-open')) {
                 const scrollY = parseInt(body.style.top || '0');
                 body.style.top = '';
@@ -2252,7 +1628,6 @@
             const link = event.currentTarget;
             const submenu = link.nextElementSibling;
 
-            // Close all other submenus first
             document.querySelectorAll('.submenu').forEach(menu => {
                 if (menu !== submenu) {
                     menu.classList.remove('active');
@@ -2260,7 +1635,6 @@
                 }
             });
 
-            // Toggle current submenu
             link.classList.toggle('active');
             submenu.classList.toggle('active');
         }
@@ -2268,7 +1642,7 @@
         // Close menu when clicking on overlay
         document.getElementById('overlay').addEventListener('click', closeMenu);
 
-        // New Search Functionality
+        // Search Functionality
         function toggleSearch() {
             const searchContainer = document.getElementById('searchContainer');
             const searchBackdrop = document.getElementById('searchBackdrop');
@@ -2287,13 +1661,12 @@
                 document.body.style.overflow = 'hidden';
             }
 
-            // Close menu if open
             if (document.getElementById('drawer').classList.contains('open')) {
                 toggleMenu();
             }
         }
 
-        function searchArtists() {
+        function searchComics() {
             const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
             const resultsContainer = document.getElementById('searchResults');
 
@@ -2303,32 +1676,32 @@
                 return;
             }
 
-            const artists = document.querySelectorAll('.profile-section');
+            const comics = document.querySelectorAll('.comic-section');
             let found = false;
             resultsContainer.innerHTML = '';
 
-            artists.forEach(artist => {
-                const artistName = artist.querySelector('h1').textContent.toLowerCase();
-                const artistStyle = artist.querySelector('p').textContent.toLowerCase();
-                const artistLink = artist.querySelector('.profile-link').textContent.toLowerCase();
-                const artistAvatar = artist.querySelector('.avatar').src;
+            comics.forEach(comic => {
+                const comicName = comic.querySelector('h1').textContent.toLowerCase();
+                const comicAuthor = comic.querySelector('.meta-item span').textContent.toLowerCase();
+                const comicDescription = comic.querySelector('.comic-description').textContent.toLowerCase();
+                const comicCover = comic.querySelector('.comic-cover').src;
 
-                if (artistName.includes(searchText) || artistStyle.includes(searchText) || artistLink.includes(searchText)) {
+                if (comicName.includes(searchText) || comicAuthor.includes(searchText) || comicDescription.includes(searchText)) {
                     found = true;
                     const resultItem = document.createElement('div');
                     resultItem.className = 'search-result-item';
 
                     resultItem.innerHTML = `
-                        <img src="${artistAvatar}" alt="${artistName}">
+                        <img src="${comicCover}" alt="${comicName}">
                         <div class="info">
-                            <div class="name">${artist.querySelector('h1').textContent}</div>
-                            <div class="style">${artist.querySelector('p').textContent}</div>
+                            <div class="name">${comic.querySelector('h1').textContent}</div>
+                            <div class="style">${comic.querySelector('.meta-item span').textContent}</div>
                         </div>
                     `;
 
                     resultItem.onclick = () => {
                         document.getElementById('searchInput').value = '';
-                        scrollToArtist(artist);
+                        scrollToComic(comic);
                         toggleSearch();
                     };
                     resultsContainer.appendChild(resultItem);
@@ -2341,96 +1714,51 @@
             resultsContainer.classList.add('active');
         }
 
-        // Highlight text
-        function highlightText(element, searchText) {
-            const text = element.textContent;
-            const regex = new RegExp(`(${searchText})`, 'gi');
-            element.innerHTML = text.replace(regex, match =>
-                `<span class="highlight">${match}</span>`
-            );
-        }
-
-        // Обновленная функция прокрутки к художнику
-        function scrollToArtist(artist) {
-            // Удаляем предыдущие подсветки
-            document.querySelectorAll('.artist-highlight').forEach(el => {
-                el.classList.remove('artist-highlight');
+        function scrollToComic(comic) {
+            document.querySelectorAll('.comic-highlight').forEach(el => {
+                el.classList.remove('comic-highlight');
             });
 
-            // Добавляем подсветку
-            artist.classList.add('artist-highlight');
+            comic.classList.add('comic-highlight');
 
-            // Прокручиваем плавно к элементу с учетом хедера
             const yOffset = -80;
-            const y = artist.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            const y = comic.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
             window.scrollTo({
                 top: y,
                 behavior: 'smooth'
             });
 
-            // Убираем подсветку через 3 секунды
             setTimeout(() => {
-                artist.classList.remove('artist-highlight');
+                comic.classList.remove('comic-highlight');
             }, 3000);
 
-            // Упрощенная обработка прерывания прокрутки
             const handleInterrupt = () => {
-                artist.classList.remove('artist-highlight');
+                comic.classList.remove('comic-highlight');
             };
 
-            // Добавляем однократный обработчик
             window.addEventListener('scroll', handleInterrupt, {
                 once: true,
-                passive: true // Оптимизация для плавной прокрутки
+                passive: true
             });
 
-            // Гарантируем восстановление скролла
             setTimeout(() => {
                 document.body.style.overflow = 'auto';
                 document.body.style.position = 'static';
             }, 500);
         }
 
-        // Обновленный обработчик клика в результатах поиска
-        function setupSearchResults() {
-            document.querySelectorAll('.search-result-item').forEach(item => {
-                item.onclick = (e) => {
-                    e.preventDefault();
-                    const artist = document.querySelector(
-                        `.profile-section:has([alt="${item.querySelector('img').alt}"])`
-                    );
-
-                    document.getElementById('searchInput').value = '';
-                    toggleSearch();
-
-                    setTimeout(() => {
-                        if (artist) {
-                            scrollToArtist(artist);
-
-                            // Обработчик прерывания прокрутки
-                            const handleInterrupt = () => {
-                                artist.classList.remove('artist-highlight');
-                                window.removeEventListener('scroll', handleInterrupt);
-                            };
-                            window.addEventListener('scroll', handleInterrupt, { once: true });
-                        }
-                    }, 100);
-                };
-            });
-        }
-
         // Search on Enter key
         document.getElementById('searchInput').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
-                searchArtists();
+                searchComics();
             }
         });
 
         // Real-time search on input
         document.getElementById('searchInput').addEventListener('input', function () {
             if (this.value.length > 0) {
-                searchArtists();
+                searchComics();
             } else {
                 document.getElementById('searchResults').classList.remove('active');
             }
@@ -2459,79 +1787,6 @@
         });
 
         // Filters Functionality
-        function initFilters() {
-            const styles = new Set();
-            const filterDropdown = document.getElementById('filtersDropdown');
-
-            // Collect all artist styles
-            document.querySelectorAll('.profile-section').forEach(section => {
-                const style = section.getAttribute('data-style');
-                if (style) styles.add(style);
-            });
-
-            // Clear existing filters
-            filterDropdown.innerHTML = '';
-
-            // Add "All" button
-            const allItem = document.createElement('a');
-            allItem.href = '#';
-            allItem.textContent = 'Все стили';
-            allItem.onclick = (e) => {
-                applyFilter('all', e);
-                updateActiveFilter(e.target);
-            };
-            filterDropdown.appendChild(allItem);
-
-            // Add "Prem Artist" filter
-            const premItem = document.createElement('a');
-            premItem.href = '#';
-            premItem.textContent = 'Prem Artist';
-            premItem.onclick = (e) => {
-                applyFilter('prem', e);
-                updateActiveFilter(e.target);
-            };
-            filterDropdown.appendChild(premItem);
-
-            // Add filters for each style
-            styles.forEach(style => {
-                const item = document.createElement('a');
-                item.href = '#';
-                item.textContent = style;
-                item.onclick = (e) => {
-                    applyFilter(style, e);
-                    updateActiveFilter(e.target);
-                };
-                filterDropdown.appendChild(item);
-            });
-        }
-
-        function updateActiveFilter(clickedElement) {
-            document.querySelectorAll('.filters-dropdown a').forEach(a => {
-                a.classList.remove('active-filter');
-            });
-            clickedElement.classList.add('active-filter');
-        }
-
-
-
-        function getNextElements(element) {
-            const elements = [];
-            let next = element.nextElementSibling;
-
-            while (next) {
-                if (next.classList.contains('favorite-works') ||
-                    next.classList.contains('works-carousel') ||
-                    next.classList.contains('show-works-btn')) {
-                    elements.push(next);
-                } else if (next.classList.contains('profile-section')) {
-                    break;
-                }
-                next = next.nextElementSibling;
-            }
-
-            return elements;
-        }
-
         function toggleFilters(event) {
             event.stopPropagation();
             const filtersDropdown = document.getElementById('filtersDropdown');
@@ -2554,248 +1809,68 @@
             }
         }
 
-        // Carousel Functionality
-        const carouselStates = {};
+        function applyFilter(selectedGenre, event) {
+            event.preventDefault();
+            closeFilters();
 
-        function initCarousel(worksInnerId) {
-            if (!carouselStates[worksInnerId]) {
-                carouselStates[worksInnerId] = {
-                    currentTranslate: 0,
-                    prevTranslate: 0,
-                    isDragging: false,
-                    startPos: 0,
-                    animationID: 0
-                };
-            }
+            document.querySelectorAll('.comic-section').forEach(comic => {
+                const genres = comic.getAttribute('data-genre');
+                const nextElements = getNextElements(comic);
 
-            const worksInner = document.getElementById(worksInnerId);
-            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
-
-            // Add event handlers
-            worksInner.addEventListener('mousedown', (e) => {
-                const state = carouselStates[worksInnerId];
-                state.isDragging = true;
-                state.startPos = e.clientX;
-                state.prevTranslate = state.currentTranslate;
-                state.animationID = requestAnimationFrame(() => animation(worksInnerId));
-                worksInner.style.cursor = 'grabbing';
-                worksInner.style.transition = 'none';
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                const state = carouselStates[worksInnerId];
-                if (!state.isDragging) return;
-                const currentPosition = e.clientX;
-                state.currentTranslate = state.prevTranslate + currentPosition - state.startPos;
-            });
-
-            window.addEventListener('mouseup', () => {
-                const state = carouselStates[worksInnerId];
-                if (!state.isDragging) return;
-                state.isDragging = false;
-                cancelAnimationFrame(state.animationID);
-                worksInner.style.cursor = 'grab';
-
-                const movedBy = state.currentTranslate - state.prevTranslate;
-                const visibleWorks = getVisibleWorksCount(worksInnerId);
-
-                if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
-                else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
-                else setPosition(worksInnerId);
-
-                worksInner.style.transition = 'transform 0.5s ease';
-            });
-
-            // Touch events
-            worksInner.addEventListener('touchstart', (e) => {
-                const state = carouselStates[worksInnerId];
-                state.isDragging = true;
-                state.startPos = e.touches[0].clientX;
-                state.prevTranslate = state.currentTranslate;
-                state.animationID = requestAnimationFrame(() => animation(worksInnerId));
-                worksInner.style.transition = 'none';
-            });
-
-            window.addEventListener('touchmove', (e) => {
-                const state = carouselStates[worksInnerId];
-                if (!state.isDragging) return;
-
-                const currentPosition = e.touches[0].clientX;
-                const newTranslate = state.prevTranslate + currentPosition - state.startPos;
-
-                // Для мобильных устройств ограничиваем перетаскивание
-                if (window.innerWidth <= 768) {
-                    const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
-                    const containerWidth = worksInner.parentElement.offsetWidth;
-                    const maxTranslate = -(totalWorksWidth - containerWidth);
-
-                    // Ограничиваем значение newTranslate между 0 и maxTranslate
-                    state.currentTranslate = Math.max(Math.min(newTranslate, 0), maxTranslate);
+                if (selectedGenre === 'all' || genres.includes(selectedGenre)) {
+                    comic.classList.remove('hidden');
+                    nextElements.forEach(el => {
+                        el.classList.remove('hidden');
+                        el.style.transitionDelay = '0.2s';
+                    });
                 } else {
-                    state.currentTranslate = newTranslate;
+                    comic.classList.add('hidden');
+                    nextElements.forEach(el => el.classList.add('hidden'));
                 }
             });
 
-            window.addEventListener('touchend', () => {
-                const state = carouselStates[worksInnerId];
-                if (!state.isDragging) return;
-                state.isDragging = false;
-                cancelAnimationFrame(state.animationID);
-
-                const movedBy = state.currentTranslate - state.prevTranslate;
-                const visibleWorks = getVisibleWorksCount(worksInnerId);
-
-                if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
-                else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
-                else setPosition(worksInnerId);
-
-                worksInner.style.transition = 'transform 0.5s ease';
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         }
 
-        function animation(worksInnerId) {
-            setPosition(worksInnerId);
-            const state = carouselStates[worksInnerId];
-            if (state.isDragging) requestAnimationFrame(() => animation(worksInnerId));
-        }
+        function getNextElements(element) {
+            const elements = [];
+            let next = element.nextElementSibling;
 
-        function setPosition(worksInnerId) {
-            const state = carouselStates[worksInnerId];
-            const worksInner = document.getElementById(worksInnerId);
-            worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
-        }
-
-        function getVisibleWorksCount(worksInnerId) {
-            const worksInner = document.getElementById(worksInnerId);
-            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
-            if (works.length === 0) return 1;
-
-            const containerWidth = worksInner.parentElement.offsetWidth;
-            const workWidth = works[0].offsetWidth + 35; // Work width + gap
-            return Math.floor(containerWidth / workWidth);
-        }
-
-        function nextWork(worksInnerId, step = null) {
-            const worksInner = document.getElementById(worksInnerId);
-            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
-            const state = carouselStates[worksInnerId];
-
-            if (step === null) step = getVisibleWorksCount(worksInnerId);
-
-            // Получаем ширину контейнера и общую ширину всех работ
-            const containerWidth = worksInner.parentElement.offsetWidth;
-            const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
-
-            // Рассчитываем максимальное смещение (чтобы последний элемент был виден)
-            const maxPosition = containerWidth - totalWorksWidth - 35; // Добавляем отступ для последнего элемента
-
-            // Рассчитываем новое положение
-            const newPosition = state.currentTranslate - (step * (works[0].offsetWidth + 35));
-
-            // Для мобильных устройств делаем дополнительную проверку
-            if (window.innerWidth <= 768) {
-                // Проверяем, не выходим ли мы за пределы
-                if (Math.abs(newPosition) > (totalWorksWidth - containerWidth)) {
-                    // Если пытаемся пролистать дальше последнего элемента, останавливаемся
-                    state.currentTranslate = -(totalWorksWidth - containerWidth);
-                } else {
-                    state.currentTranslate = newPosition;
+            while (next) {
+                if (next.classList.contains('chapters-section') ||
+                    next.classList.contains('similar-comics')) {
+                    elements.push(next);
+                } else if (next.classList.contains('comic-section')) {
+                    break;
                 }
-            } else {
-                // Для десктопной версии оставляем прежнюю логику
-                state.currentTranslate = Math.max(newPosition, maxPosition);
+                next = next.nextElementSibling;
             }
 
-            worksInner.style.transition = 'transform 0.5s ease';
-            setPosition(worksInnerId);
+            return elements;
         }
 
-        function prevWork(worksInnerId, step = null) {
-            const worksInner = document.getElementById(worksInnerId);
-            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
-            const state = carouselStates[worksInnerId];
+        function closeFilters() {
+            const filtersDropdown = document.getElementById('filtersDropdown');
+            const filtersButton = document.querySelector('.filters-button');
 
-            if (step === null) step = getVisibleWorksCount(worksInnerId);
-
-            // Рассчитываем новое положение
-            const newPosition = state.currentTranslate + (step * (works[0].offsetWidth + 35));
-
-            // Ограничиваем смещение, чтобы не выйти за пределы (не больше 0)
-            state.currentTranslate = Math.min(newPosition, 0);
-
-            worksInner.style.transition = 'transform 0.5s ease';
-            setPosition(worksInnerId);
+            filtersDropdown.classList.remove('active');
+            filtersButton.classList.remove('active');
+            document.removeEventListener('click', closeFiltersOnClickOutside);
         }
 
-        // Modal Functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
+        // Comic Functions
+        function readComic(comicId) {
+            alert(`Чтение комикса: ${comicId}`);
+            // Здесь будет реализация открытия комикса
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
+        function readChapter(comicId, chapterNumber) {
+            alert(`Чтение главы ${chapterNumber} комикса: ${comicId}`);
+            // Здесь будет реализация открытия главы комикса
         }
-
-        // Full Image Modal Functions
-        function openImageModal(imgSrc) {
-            const imageModal = document.getElementById('imageModal');
-            const expandedImg = document.getElementById('expandedImg');
-
-            expandedImg.src = imgSrc;
-            imageModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeImageModal() {
-            document.getElementById('imageModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modals when clicking outside
-        window.onclick = function (event) {
-            document.querySelectorAll('.modal').forEach(modal => {
-                if (event.target == modal) {
-                    closeModal(modal.id);
-                }
-            });
-
-            if (event.target === document.getElementById('imageModal')) {
-                closeImageModal();
-            }
-        }
-
-        // Close modals with ESC key
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                document.querySelectorAll('.modal').forEach(modal => {
-                    if (modal.style.display === 'block') {
-                        closeModal(modal.id);
-                    }
-                });
-
-                if (document.getElementById('imageModal').style.display === 'block') {
-                    closeImageModal();
-                }
-            }
-        });
-
-        // Click on works in carousel opens corresponding modal
-        document.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3').forEach(thumb => {
-            thumb.addEventListener('click', function (e) {
-                e.stopPropagation();
-                openImageModal(this.src);
-            });
-        });
-
-        // Click on images in artist modals
-        document.querySelectorAll('.modal-img').forEach(img => {
-            img.addEventListener('click', function (e) {
-                e.stopPropagation();
-                openImageModal(this.src);
-            });
-        });
 
         // Back to Top Function
         function scrollToTop() {
@@ -2815,17 +1890,13 @@
             }
         });
 
-
-
         // Function to open tab by link
         function openTabByLink(tabId) {
-            // This function would be implemented in the Services.html page
             console.log('Opening tab:', tabId);
         }
 
-        // Добавим этот код в раздел скриптов
+        // Intersection Observer for animations
         document.addEventListener('DOMContentLoaded', function () {
-            // Настройка Intersection Observer
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px'
@@ -2835,148 +1906,40 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-
-                        // Для модальных изображений
-                        if (entry.target.classList.contains('modal-img')) {
-                            setTimeout(() => {
-                                entry.target.classList.add('visible');
-                            }, 100 * index);
-                        }
                     }
                 });
             }, observerOptions);
 
-            // Наблюдаем за всеми элементами
-            document.querySelectorAll('.profile-section, .favorite-works, .works-carousel, .show-works-btn').forEach(el => {
+            document.querySelectorAll('.comic-section, .chapters-section, .similar-comics').forEach(el => {
                 observer.observe(el);
             });
 
-            // Для изображений в модалках
-            document.querySelectorAll('.modal-img').forEach((img, index) => {
-                observer.observe(img);
+            document.querySelectorAll('.chapter-card, .similar-comic').forEach((el, index) => {
+                setTimeout(() => observer.observe(el), 100 * index);
             });
         });
 
-        // Модифицируем функцию фильтрации
-        function applyFilter(selectedStyle, event) {
-            event.preventDefault();
-
-            // Закрываем фильтры после выбора
-            closeFilters();
-
-            document.querySelectorAll('.profile-section').forEach(profile => {
-                const style = profile.getAttribute('data-style');
-                const isPrem = profile.getAttribute('data-prem') === 'true';
-                const nextElements = getNextElements(profile);
-
-                if (selectedStyle === 'all' ||
-                    (selectedStyle === 'prem' && isPrem) ||
-                    (selectedStyle !== 'prem' && style === selectedStyle)) {
-                    profile.classList.remove('hidden');
-                    nextElements.forEach(el => {
-                        el.classList.remove('hidden');
-                        el.style.transitionDelay = '0.2s';
-                    });
-                } else {
-                    profile.classList.add('hidden');
-                    nextElements.forEach(el => el.classList.add('hidden'));
-                }
-            });
-
-            // Smooth scroll to top after applying filter
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        function closeFilters() {
-            const filtersDropdown = document.getElementById('filtersDropdown');
-            const filtersButton = document.querySelector('.filters-button');
-
-            filtersDropdown.classList.remove('active');
-            filtersButton.classList.remove('active');
-            document.removeEventListener('click', closeFiltersOnClickOutside);
-        }
-
-        // Обновим функцию для модальных окон
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-
-            // Запуск анимации для изображений
-            setTimeout(() => {
-                modal.querySelectorAll('.modal-img').forEach((img, index) => {
-                    setTimeout(() => img.classList.add('visible'), 50 * index);
-                });
-            }, 100);
-        }
-
-        // Функция для обработки якорных ссылок при загрузке страницы
+        // Handle anchor links
         function handleAnchorLinks() {
-            // Проверяем, есть ли якорь в URL
             if (window.location.hash) {
-                const artistId = window.location.hash.substring(1); // Убираем # из начала
-                const artistSection = document.getElementById(artistId);
+                const comicId = window.location.hash.substring(1);
+                const comicSection = document.getElementById(comicId);
 
-                if (artistSection) {
-                    // Прокручиваем к секции художника
+                if (comicSection) {
                     setTimeout(() => {
-                        artistSection.scrollIntoView({ behavior: 'smooth' });
+                        comicSection.scrollIntoView({ behavior: 'smooth' });
+                        comicSection.classList.add('comic-highlight');
 
-                        // Подсвечиваем профиль художника
-                        const profile = artistSection.querySelector('.profile-section');
-                        if (profile) {
-                            profile.classList.add('artist-highlight');
-
-                            // Убираем подсветку через 3 секунды
-                            setTimeout(() => {
-                                profile.classList.remove('artist-highlight');
-                            }, 3000);
-                        }
+                        setTimeout(() => {
+                            comicSection.classList.remove('comic-highlight');
+                        }, 3000);
                     }, 100);
                 }
             }
         }
 
-        // Вызываем функцию при загрузке страницы
         window.addEventListener('load', handleAnchorLinks);
-
-        // Также обрабатываем изменения hash (если пользователь кликает на якорные ссылки на той же странице)
         window.addEventListener('hashchange', handleAnchorLinks);
-
-
-    </script>
-
-    <script>
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize carousels for each artist
-            initCarousel('artist1Works');
-            initCarousel('artist2Works');
-            initCarousel('artist3Works');
-
-
-
-
-
-
-            // Initialize filters
-            initFilters();
-
-            // Add class to first "All styles" element
-            const firstFilter = document.querySelector('.filters-dropdown a:first-child');
-            if (firstFilter) firstFilter.classList.add('active-filter');
-
-            // Adapt carousels on window resize
-            window.addEventListener('resize', () => {
-                Object.keys(carouselStates).forEach(worksInnerId => {
-                    carouselStates[worksInnerId].currentTranslate = 0;
-                    setPosition(worksInnerId);
-                });
-            });
-        });
     </script>
 </body>
 
