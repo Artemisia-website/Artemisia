@@ -648,7 +648,68 @@
             </div>
         </section>
 
+        <!-- Yanshu -->
+        <section id="172">
+            <section class="profile-section" data-style="Авторский">
+                <img src="https://i.postimg.cc/P5vp74Wk/6.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Yanshu</h1>
+                    <a href="https://t.me/ynshss" class="profile-link"> @ynshss
 
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+                    <div class="social-links">
+                        <a href="https://t.me/Yanchiksu" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist172Carousel">
+                <div class="works-inner" id="artist172Works">
+                    <img src="https://i.postimg.cc/yNN5BDNB/1.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/3rjZSKKZ/2.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/cHgbgPYb/3.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/63k1dzf5/4.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/s2SWMcxJ/5.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/P5vp74Wk/6.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/yNFvH3Jp/7.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/3rL9YTRh/8.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/m2tjr5zH/9.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/FRppftVj/10.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/VLpR0WnH/11.jpg" class="work-thumb-1" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist172Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist172Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal172')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal172" class="modal">
+                <span class="close-btn" onclick="closeModal('modal172')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/yNN5BDNB/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3rjZSKKZ/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/cHgbgPYb/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/63k1dzf5/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/s2SWMcxJ/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/P5vp74Wk/6.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/yNFvH3Jp/7.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3rL9YTRh/8.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/m2tjr5zH/9.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/FRppftVj/10.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/VLpR0WnH/11.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
 
         <!-- Adefis -->
         <section id="139">
@@ -12521,6 +12582,7 @@
             initCarousel('artist169Works');
             initCarousel('artist170Works');
             initCarousel('artist171Works');
+            initCarousel('artist172Works');
 
 
 
