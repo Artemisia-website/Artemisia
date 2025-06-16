@@ -648,6 +648,58 @@
             </div>
         </section>
 
+        <!-- Likysha -->
+        <section id="174">
+            <section class="profile-section" data-style="Авторский">
+                <img src="https://i.postimg.cc/43Qh3L2R/6.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Likysha</h1>
+                    <a href="https://t.me/likysha4z" class="profile-link"> @likysha4z
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+                    <div class="social-links">
+                        <a href="https://t.me/kypite_art4z" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist174Carousel">
+                <div class="works-inner" id="artist174Works">
+                    <img src="https://i.postimg.cc/BZHfPrcF/1.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/vHvR35KH/2.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/mD9JM9M4/3.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/ydCnMbgq/4.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/pdHFRbZB/5.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/43Qh3L2R/6.jpg" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist174Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist174Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal174')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal174" class="modal">
+                <span class="close-btn" onclick="closeModal('modal174')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/BZHfPrcF/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/vHvR35KH/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/mD9JM9M4/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/ydCnMbgq/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/pdHFRbZB/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/43Qh3L2R/6.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
         <!-- Yanshu -->
         <section id="172">
             <section class="profile-section" data-style="Авторский">
@@ -12583,6 +12635,8 @@
             initCarousel('artist170Works');
             initCarousel('artist171Works');
             initCarousel('artist172Works');
+
+            initCarousel('artist174Works');
 
 
 

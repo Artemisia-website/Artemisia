@@ -33,7 +33,7 @@
 
         /* Header Styles */
         header {
-            background-color: #1f1f1f; /* Изменено на #1f1f1f */
+            background-color: #1f1f1f;
             color: white;
             padding: 10px 15px;
             width: 100%;
@@ -140,7 +140,6 @@
             top: 50%;
             transform: translateY(-50%);
             background-color: #FFD700;
-            /* Желтый цвет */
             border: none;
             border-radius: 50%;
             width: 36px;
@@ -222,7 +221,6 @@
 
         .search-result-item .tag {
             background-color: #FFD700;
-            /* Желтый цвет */
             color: #333;
             padding: 2px 6px;
             border-radius: 10px;
@@ -233,7 +231,6 @@
             padding: 20px;
             text-align: center;
             color: #FFD700;
-            /* Желтый цвет */
             font-weight: bold;
         }
 
@@ -332,13 +329,15 @@
         }
 
         .menu a:hover {
-            background: #FFD700;
-            /* Желтый цвет */
-            color: #333;
+            background: #333;
+        }
+
+        .menu a.active {
+            color: #FFD700;
         }
 
         .menu a:hover img {
-            filter: brightness(0.3);
+            filter: brightness(1);
         }
 
         .menu img {
@@ -395,59 +394,179 @@
         .banner-subtitle {
             font-size: 1.2rem;
             color: #FFD700;
-            /* Желтый цвет */
             max-width: 800px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        /* Filters */
+        /* New Filters Design */
         .filters-container {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
             background-color: #121212;
+            padding: 15px;
             position: sticky;
             top: 60px;
             z-index: 900;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
         }
 
-        .filter-tag {
-            padding: 8px 16px;
+        .filter-group {
+            position: relative;
+        }
+
+        .filter-dropdown-btn {
+            background-color: #252525;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Comfortaa", sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-dropdown-btn:hover {
+            background-color: #333;
+        }
+
+        .filter-dropdown-btn.active {
+            background-color: #FFD700;
+            color: #333;
+        }
+
+        .filter-dropdown-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .filter-dropdown-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .filter-dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #252525;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            min-width: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .filter-dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .filter-option {
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-option:hover {
+            background-color: #333;
+        }
+
+        .filter-option.selected {
+            background-color: #FFD700;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .filter-option .checkmark {
+            display: none;
+        }
+
+        .filter-option.selected .checkmark {
+            display: inline;
+        }
+
+        .filter-search {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border: none;
             background-color: #333;
             color: white;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 14px;
-            border: none;
+            font-family: "Comfortaa", sans-serif;
             outline: none;
         }
 
-        .filter-tag:hover {
-            background-color: #FFD700;
-            /* Желтый цвет */
-            color: #333;
-            transform: translateY(-2px);
+        .filter-search::placeholder {
+            color: #aaa;
         }
 
-        .filter-tag.active {
+        .selected-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .selected-filter {
             background-color: #FFD700;
-            /* Желтый цвет */
             color: #333;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             font-weight: bold;
+        }
+
+        .selected-filter .remove {
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .selected-filter .remove:hover {
+            transform: scale(1.2);
+        }
+
+        .filter-reset {
+            background-color: transparent;
+            color: #FFD700;
+            border: 1px solid #FFD700;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-family: "Comfortaa", sans-serif;
+        }
+
+        .filter-reset:hover {
+            background-color: rgba(255, 215, 0, 0.1);
         }
 
         /* Comics Grid */
         .comics-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
 
         .comic-card {
@@ -472,27 +591,27 @@
         }
 
         .comic-info {
-            padding: 15px;
+            padding: 12px;
         }
 
         .comic-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: white;
         }
 
         .comic-author {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #aaa;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
         }
 
         .comic-author img {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             margin-right: 5px;
         }
@@ -500,17 +619,16 @@
         .comic-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
+            gap: 4px;
+            margin-top: 8px;
         }
 
         .comic-tag {
             background-color: #FFD700;
-            /* Желтый цвет */
             color: #333;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -521,13 +639,13 @@
 
         .comic-status {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: bold;
         }
 
@@ -554,21 +672,21 @@
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 1100;
             overflow-y: auto;
-            padding: 20px;
+            padding: 15px;
             box-sizing: border-box;
         }
 
         .comic-modal-content {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             background-color: #252525;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
 
         .comic-modal-header {
-            padding: 20px;
+            padding: 15px;
             background-color: #333;
             display: flex;
             justify-content: space-between;
@@ -576,88 +694,103 @@
         }
 
         .comic-modal-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: white;
         }
 
         .comic-modal-close {
             color: white;
-            font-size: 30px;
+            font-size: 26px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .comic-modal-close:hover {
             color: #FFD700;
-            /* Желтый цвет */
         }
 
         .comic-modal-body {
-            padding: 20px;
+            padding: 15px;
         }
 
         .comic-modal-cover {
             width: 100%;
-            max-height: 500px;
+            max-height: 450px;
             object-fit: contain;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 5px;
         }
 
         .comic-modal-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .comic-modal-author {
             display: flex;
             align-items: center;
             color: #aaa;
+            font-size: 0.9rem;
         }
 
         .comic-modal-author img {
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         .comic-modal-date {
             color: #aaa;
+            font-size: 0.9rem;
         }
 
         .comic-modal-status {
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
             font-weight: bold;
         }
 
         .comic-modal-description {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.6;
             color: #ddd;
+            font-size: 0.95rem;
         }
 
         .comic-modal-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .comic-modal-tag {
+            background-color: #FFD700;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
         }
 
         .comic-modal-chapters {
-            margin-top: 30px;
+            margin-top: 20px;
+        }
+
+        .comic-modal-chapters h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
 
         .comic-modal-chapter {
-            padding: 15px;
+            padding: 12px;
             background-color: #333;
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -668,19 +801,20 @@
 
         .comic-modal-chapter-title {
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
         }
 
         .comic-modal-chapter-date {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #aaa;
         }
 
         /* Footer */
         .site-footer {
-            background-color: #1f1f1f; /* Изменено на #1f1f1f */
-            padding: 40px 20px;
-            margin-top: 40px;
+            background-color: #1f1f1f;
+            padding: 30px 15px;
+            margin-top: 30px;
             width: 100%;
         }
 
@@ -690,7 +824,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 25px;
+            padding-bottom: 20px;
             border-bottom: 1px solid #333;
         }
 
@@ -704,27 +838,26 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 36px;
             width: auto;
         }
 
         .footer-links {
             display: flex;
-            gap: 30px;
+            gap: 20px;
         }
 
         .footer-link {
             color: #aaa;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             position: relative;
-            padding: 6px 0;
+            padding: 5px 0;
             transition: color 0.3s ease;
         }
 
         .footer-link:hover {
             color: #FFD700;
-            /* Желтый цвет */
         }
 
         .footer-link::after {
@@ -733,9 +866,8 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background-color: #FFD700;
-            /* Желтый цвет */
             transition: width 0.3s ease;
         }
 
@@ -745,25 +877,25 @@
 
         .footer-bottom {
             max-width: 1200px;
-            margin: 25px auto 0;
+            margin: 20px auto 0;
             text-align: center;
         }
 
         .footer-text {
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-social {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .social-icon {
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background-color: #333;
             display: flex;
@@ -774,7 +906,6 @@
 
         .social-icon:hover {
             background-color: #FFD700;
-            /* Желтый цвет */
             transform: translateY(-3px);
         }
 
@@ -785,12 +916,11 @@
         /* Back to Top Button */
         .back-to-top-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
             background-color: #FFD700;
-            /* Желтый цвет */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -800,7 +930,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .back-to-top-btn:hover {
@@ -815,7 +945,8 @@
 
         .back-to-top-btn svg {
             fill: white;
-            /* Белый цвет стрелки */
+            width: 20px;
+            height: 20px;
         }
 
         /* Responsive Styles */
@@ -825,7 +956,7 @@
             }
 
             .banner-title {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
             }
 
             .comics-container {
@@ -843,16 +974,17 @@
             }
 
             .banner-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .banner-subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .comics-container {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 15px;
+                padding: 10px;
             }
 
             .comic-cover {
@@ -861,12 +993,28 @@
 
             .footer-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
 
             .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 15px;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .selected-filters {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .filter-reset {
+                align-self: flex-start;
             }
         }
 
@@ -888,9 +1036,14 @@
                 aspect-ratio: 2/3;
             }
 
-            .filter-tag {
-                padding: 6px 12px;
-                font-size: 12px;
+            .filter-dropdown-btn {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .selected-filter {
+                padding: 4px 8px;
+                font-size: 11px;
             }
         }
 
@@ -1066,23 +1219,152 @@
         </div>
     </section>
 
-    <!-- Filters -->
+    <!-- New Filters -->
     <div class="filters-container">
-        <button class="filter-tag active" onclick="filterComics('all')">Все</button>
-        <button class="filter-tag" onclick="filterComics('fantasy')">Фэнтези</button>
-        <button class="filter-tag" onclick="filterComics('sci-fi')">Sci-Fi</button>
-        <button class="filter-tag" onclick="filterComics('romance')">Романтика</button>
-        <button class="filter-tag" onclick="filterComics('action')">Экшен</button>
-        <button class="filter-tag" onclick="filterComics('drama')">Драма</button>
-        <button class="filter-tag" onclick="filterComics('comedy')">Комедия</button>
-        <button class="filter-tag" onclick="filterComics('horror')">Хоррор</button>
-        <button class="filter-tag" onclick="filterComics('mystery')">Мистика</button>
+        <!-- Genre Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Жанры</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <input type="text" class="filter-search" placeholder="Поиск жанров..." oninput="filterOptions(this)">
+                <div class="filter-option" onclick="selectFilter(this, 'superhero')">
+                    <span>Супергероика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'adventure')">
+                    <span>Приключения</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'horror')">
+                    <span>Ужасы</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'fantasy')">
+                    <span>Фэнтези</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'sci-fi')">
+                    <span>Научная фантастика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'romance')">
+                    <span>Романтика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'comedy')">
+                    <span>Комедия</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'drama')">
+                    <span>Драма</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'manga')">
+                    <span>Манга</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'manhwa')">
+                    <span>Маньхва</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Format Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Форматы</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <input type="text" class="filter-search" placeholder="Поиск форматов..." oninput="filterOptions(this)">
+                <div class="filter-option" onclick="selectFilter(this, 'superhero-universe')">
+                    <span>Супергероика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'anthology')">
+                    <span>Антологии</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'one-shot')">
+                    <span>One-shots</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'mini-series')">
+                    <span>Мини-сериалы</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'ongoing')">
+                    <span>Ongoing</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'graphic-novel')">
+                    <span>Graphic Novels</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'webcomic')">
+                    <span>Веб-комиксы</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audience Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Аудитория</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <div class="filter-option" onclick="selectFilter(this, 'kids')">
+                    <span>Детские</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'teen')">
+                    <span>Подростковые</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'adult')">
+                    <span>Взрослые</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Статус</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <div class="filter-option" onclick="selectFilter(this, 'ongoing')">
+                    <span>Онгоинг</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'completed')">
+                    <span>Завершен</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'hiatus')">
+                    <span>Перерыв</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Filters -->
+        <div class="selected-filters" id="selectedFilters"></div>
+
+        <button class="filter-reset" onclick="resetFilters()">Сбросить фильтры</button>
     </div>
 
     <!-- Comics Grid -->
     <div class="comics-container">
         <!-- Comic 1 -->
-        <div class="comic-card" data-tags="fantasy adventure ongoing">
+        <div class="comic-card" data-tags="fantasy adventure ongoing manga-genres teen">
             <img src="https://i.postimg.cc/8z7K9JXj/comics-banner.jpg" alt="Название комикса" class="comic-cover"
                 onclick="openComicModal('comic1')">
             <div class="comic-status ongoing">Онгоинг</div>
@@ -1101,7 +1383,7 @@
         </div>
 
         <!-- Comic 2 -->
-        <div class="comic-card" data-tags="sci-fi action completed">
+        <div class="comic-card" data-tags="sci-fi action completed graphic-novel adult">
             <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" alt="Название комикса"
                 class="comic-cover" onclick="openComicModal('comic2')">
             <div class="comic-status completed">Завершен</div>
@@ -1120,7 +1402,7 @@
         </div>
 
         <!-- Comic 3 -->
-        <div class="comic-card" data-tags="romance drama ongoing">
+        <div class="comic-card" data-tags="romance drama ongoing webcomic teen">
             <img src="https://i.postimg.cc/bJNXtyz8/photo-5244777448288154711-y.jpg" alt="Название комикса"
                 class="comic-cover" onclick="openComicModal('comic3')">
             <div class="comic-status ongoing">Онгоинг</div>
@@ -1139,7 +1421,7 @@
         </div>
 
         <!-- Comic 4 -->
-        <div class="comic-card" data-tags="horror mystery completed">
+        <div class="comic-card" data-tags="horror mystery completed manga adult">
             <img src="https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg" alt="Название комикса"
                 class="comic-cover" onclick="openComicModal('comic4')">
             <div class="comic-status completed">Завершен</div>
@@ -1158,7 +1440,7 @@
         </div>
 
         <!-- Comic 5 -->
-        <div class="comic-card" data-tags="comedy romance ongoing">
+        <div class="comic-card" data-tags="comedy romance ongoing one-shot teen">
             <img src="https://i.postimg.cc/SKSHMjj5/photo-5305270117032127730-y.jpg" alt="Название комикса"
                 class="comic-cover" onclick="openComicModal('comic5')">
             <div class="comic-status ongoing">Онгоинг</div>
@@ -1177,7 +1459,7 @@
         </div>
 
         <!-- Comic 6 -->
-        <div class="comic-card" data-tags="fantasy action hiatus">
+        <div class="comic-card" data-tags="fantasy action hiatus superhero-universe teen">
             <img src="https://i.postimg.cc/YSxK0GBb/photo-5244777448288154712-y.jpg" alt="Название комикса"
                 class="comic-cover" onclick="openComicModal('comic6')">
             <div class="comic-status hiatus">Перерыв</div>
@@ -1224,11 +1506,11 @@
                 </div>
 
                 <div class="comic-modal-tags">
-                    <span class="comic-tag">#фэнтези</span>
-                    <span class="comic-tag">#приключения</span>
-                    <span class="comic-tag">#магия</span>
-                    <span class="comic-tag">#дракон</span>
-                    <span class="comic-tag">#избранная</span>
+                    <span class="comic-modal-tag">#фэнтези</span>
+                    <span class="comic-modal-tag">#приключения</span>
+                    <span class="comic-modal-tag">#магия</span>
+                    <span class="comic-modal-tag">#дракон</span>
+                    <span class="comic-modal-tag">#избранная</span>
                 </div>
 
                 <div class="comic-modal-chapters">
@@ -1277,11 +1559,11 @@
                 </div>
 
                 <div class="comic-modal-tags">
-                    <span class="comic-tag">#sci-fi</span>
-                    <span class="comic-tag">#киберпанк</span>
-                    <span class="comic-tag">#экшен</span>
-                    <span class="comic-tag">#хакеры</span>
-                    <span class="comic-tag">#будущее</span>
+                    <span class="comic-modal-tag">#sci-fi</span>
+                    <span class="comic-modal-tag">#киберпанк</span>
+                    <span class="comic-modal-tag">#экшен</span>
+                    <span class="comic-modal-tag">#хакеры</span>
+                    <span class="comic-modal-tag">#будущее</span>
                 </div>
 
                 <div class="comic-modal-chapters">
@@ -1477,23 +1759,172 @@
             }, 3000);
         }
 
-        // Filter Comics
-        function filterComics(tag) {
-            document.querySelectorAll('.filter-tag').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        // New Filter Functions
+        let activeFilters = [];
+        const filterMap = {
+            'superhero': 'Супергероика',
+            'adventure': 'Приключения',
+            'horror': 'Ужасы',
+            'fantasy': 'Фэнтези',
+            'sci-fi': 'Научная фантастика',
+            'romance': 'Романтика',
+            'comedy': 'Комедия',
+            'drama': 'Драма',
+            'manga': 'Манга',
+            'manhwa': 'Маньхва',
+            'superhero-universe': 'Супергероика',
+            'anthology': 'Антологии',
+            'one-shot': 'One-shots',
+            'mini-series': 'Мини-сериалы',
+            'ongoing': 'Ongoing',
+            'graphic-novel': 'Graphic Novels',
+            'webcomic': 'Веб-комиксы',
+            'kids': 'Детские',
+            'teen': 'Подростковые',
+            'adult': 'Взрослые',
+            'completed': 'Завершен',
+            'hiatus': 'Перерыв'
+        };
 
+        function toggleDropdown(button) {
+            const dropdown = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.filter-dropdown-btn').forEach(btn => {
+                if (btn !== button) {
+                    btn.classList.remove('active');
+                    btn.nextElementSibling.classList.remove('show');
+                }
+            });
+            
+            if (isActive) {
+                button.classList.remove('active');
+                dropdown.classList.remove('show');
+            } else {
+                button.classList.add('active');
+                dropdown.classList.add('show');
+            }
+        }
+
+        function filterOptions(input) {
+            const searchText = input.value.toLowerCase();
+            const options = input.parentElement.querySelectorAll('.filter-option');
+            
+            options.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                if (text.includes(searchText)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        function selectFilter(option, filterValue) {
+            option.classList.toggle('selected');
+            const filterName = filterMap[filterValue] || filterValue;
+            
+            if (option.classList.contains('selected')) {
+                if (!activeFilters.includes(filterValue)) {
+                    activeFilters.push(filterValue);
+                    addSelectedFilter(filterValue, filterName);
+                }
+            } else {
+                activeFilters = activeFilters.filter(f => f !== filterValue);
+                removeSelectedFilter(filterValue);
+            }
+            
+            applyFilters();
+        }
+
+        function addSelectedFilter(filterValue, filterName) {
+            const selectedFiltersContainer = document.getElementById('selectedFilters');
+            const filterElement = document.createElement('div');
+            filterElement.className = 'selected-filter';
+            filterElement.dataset.value = filterValue;
+            filterElement.innerHTML = `
+                <span>${filterName}</span>
+                <span class="remove" onclick="removeFilter('${filterValue}')">×</span>
+            `;
+            selectedFiltersContainer.appendChild(filterElement);
+        }
+
+        function removeSelectedFilter(filterValue) {
+            const filterElement = document.querySelector(`.selected-filter[data-value="${filterValue}"]`);
+            if (filterElement) {
+                filterElement.remove();
+            }
+            
+            // Also unselect the option in dropdown
+            const option = document.querySelector(`.filter-option[onclick*="${filterValue}"]`);
+            if (option) {
+                option.classList.remove('selected');
+            }
+        }
+
+        function removeFilter(filterValue) {
+            activeFilters = activeFilters.filter(f => f !== filterValue);
+            removeSelectedFilter(filterValue);
+            applyFilters();
+            
+            // Also update the dropdown button if it's active
+            const dropdownBtn = document.querySelector('.filter-dropdown-btn.active');
+            if (dropdownBtn) {
+                dropdownBtn.classList.remove('active');
+                dropdownBtn.nextElementSibling.classList.remove('show');
+            }
+        }
+
+        function applyFilters() {
             const comics = document.querySelectorAll('.comic-card');
 
+            if (activeFilters.length === 0) {
+                comics.forEach(comic => {
+                    comic.style.display = 'block';
+                });
+                return;
+            }
+
             comics.forEach(comic => {
-                if (tag === 'all' || comic.getAttribute('data-tags').includes(tag)) {
+                const tags = comic.getAttribute('data-tags').split(' ');
+                const hasAllFilters = activeFilters.every(filter => tags.includes(filter));
+                
+                if (hasAllFilters) {
                     comic.style.display = 'block';
                 } else {
                     comic.style.display = 'none';
                 }
             });
         }
+
+        function resetFilters() {
+            activeFilters = [];
+            document.getElementById('selectedFilters').innerHTML = '';
+            
+            // Reset all selected options
+            document.querySelectorAll('.filter-option.selected').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Reset dropdown buttons
+            document.querySelectorAll('.filter-dropdown-btn.active').forEach(btn => {
+                btn.classList.remove('active');
+                btn.nextElementSibling.classList.remove('show');
+            });
+            
+            applyFilters();
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.filter-group')) {
+                document.querySelectorAll('.filter-dropdown-content.show').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                    dropdown.previousElementSibling.classList.remove('active');
+                });
+            }
+        });
 
         // Comic Modal Functions
         function openComicModal(modalId) {
