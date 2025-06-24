@@ -837,6 +837,55 @@
 
         <!-- БЕСПЛАТНИКИ БЕСПЛАТНИКИ БЕСПЛАТНИКИ БЕСПЛАТНИКИ БЕСПЛАТНИКИ -->
 
+        <!-- Bzzzbub -->
+        <section id="198">
+            <section class="profile-section" data-style="Аниме">
+                <img src="https://i.postimg.cc/ZntsVYMd/photo-5393149404220879851-y.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> Bzzzbub </h1>
+                    <a href="https://t.me/bzzzzbub" class="profile-link"> @bzzzzbub
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Аниме</p>
+                    <div class="social-links">
+                        <a href="https://t.me/bzzzbub" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist198Carousel">
+                <div class="works-inner" id="artist198Works">
+                    <img src="https://i.postimg.cc/3rmcWpkC/photo-5393149404220879846-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/QtWnQK0D/photo-5393149404220879847-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/2yQcJpsX/photo-5393149404220879848-y.jpg" class="work-thumb-3" alt="">
+                    
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist198Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist198Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal198')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal198" class="modal">
+                <span class="close-btn" onclick="closeModal('modal198')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/3rmcWpkC/photo-5393149404220879846-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/QtWnQK0D/photo-5393149404220879847-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/2yQcJpsX/photo-5393149404220879848-y.jpg" class="modal-img" alt="">
+                  
+
+                </div>
+            </div>
+        </section>
+
         <!-- GAYANA -->
         <section id="197">
             <section class="profile-section" data-style="Семиреализм">
@@ -13511,6 +13560,8 @@
             initCarousel('artist195Works');
             initCarousel('artist196Works');
             initCarousel('artist197Works');
+            initCarousel('artist198Works');
+
 
 
 
