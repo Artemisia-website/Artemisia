@@ -572,7 +572,8 @@
 
         .filter-group {
             position: relative;
-            margin-bottom: 5px; /* Добавлен отступ между группами фильтров */
+            margin-bottom: 5px;
+            /* Добавлен отступ между группами фильтров */
         }
 
         .filter-dropdown-btn {
@@ -610,7 +611,8 @@
 
         .filter-dropdown-content {
             position: absolute;
-            top: calc(100% + 5px); /* Добавлен отступ между кнопкой и выпадающим меню */
+            top: calc(100% + 5px);
+            /* Добавлен отступ между кнопкой и выпадающим меню */
             left: 0;
             background-color: #3a3a3a;
             border-radius: 8px;
@@ -622,7 +624,8 @@
             max-height: 300px;
             overflow-y: auto;
             transition: all 0.3s ease;
-            margin-top: 5px; /* Дополнительный отступ */
+            margin-top: 5px;
+            /* Дополнительный отступ */
         }
 
         .filter-dropdown-content.show {
@@ -1375,6 +1378,61 @@
             transform: translateY(-2px);
         }
 
+        /* Navigation buttons for desktop */
+        .comic-modal-nav {
+            display: none;
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 215, 0, 0.7);
+            border-radius: 50%;
+            z-index: 1201;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .comic-modal-nav:hover {
+            background-color: rgba(255, 215, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .comic-modal-nav.prev {
+            left: 10px;
+        }
+
+        .comic-modal-nav.next {
+            right: 10px;
+        }
+
+        .comic-modal-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: #333;
+        }
+
+        /* Mobile swipe area */
+        .comic-modal-swipe-area {
+            display: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            z-index: 10;
+        }
+
+        .comic-modal-swipe-area.left {
+            left: 0;
+        }
+
+        .comic-modal-swipe-area.right {
+            right: 0;
+        }
+
         /* Responsive styles for comic modal */
         @media (min-width: 768px) {
             .comic-modal-container {
@@ -1384,19 +1442,19 @@
                 min-height: auto;
                 max-height: 90vh;
             }
-            
+
             .comic-modal-header {
                 padding: 15px 20px;
             }
-            
+
             .comic-modal-title {
                 font-size: 1.5rem;
             }
-            
+
             .comic-modal-body {
                 flex-direction: row;
             }
-            
+
             .comic-modal-left {
                 flex: 0 0 40%;
                 padding: 20px;
@@ -1404,16 +1462,28 @@
                 border-bottom: none;
                 height: 100%;
             }
-            
+
             .comic-modal-right {
                 padding: 20px;
             }
-            
+
             .comic-modal-actions {
                 position: static;
                 background: transparent;
                 padding: 0;
                 margin-top: 20px;
+            }
+
+            /* Show navigation buttons on desktop */
+            .comic-modal-nav {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 767px) {
+            /* Show swipe areas on mobile */
+            .comic-modal-swipe-area {
+                display: block;
             }
         }
 
@@ -1730,6 +1800,19 @@
 
         .comic-card:nth-child(8) {
             animation-delay: 0.8s;
+        }
+
+        .chapter-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .comic-modal-chapter:hover .chapter-link {
+            color: inherit;
         }
     </style>
 </head>
@@ -2180,12 +2263,13 @@
     <div class="comics-container">
         <!-- Comic 1 -->
         <div class="comic-card" data-tags="fantasy adventure ongoing manga-genres teen">
-            <img src="https://i.postimg.cc/D0QggFjy/photo-5199688117110563758-y.jpg" alt="Название комикса" class="comic-cover"
-                onclick="openComicModal('comic1')">
+            <img src="https://i.postimg.cc/D0QggFjy/photo-5199688117110563758-y.jpg" alt="Название комикса"
+                class="comic-cover" onclick="openComicModal('comic1')">
             <div class="comic-status ongoing">Онгоинг</div>
             <div class="comic-info">
                 <h3 class="comic-title">Путешествие в Элизиум</h3>
-                <div class="comic-author" onclick="window.location.href='artist-profile.html?id=alexia'; event.stopPropagation();">
+                <div class="comic-author"
+                    onclick="window.location.href='artist-profile.html?id=alexia'; event.stopPropagation();">
                     <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" alt="Автор">
                     <span>Алексия</span>
                 </div>
@@ -2204,7 +2288,8 @@
             <div class="comic-status completed">Завершен</div>
             <div class="comic-info">
                 <h3 class="comic-title">Кибер-революция</h3>
-                <div class="comic-author" onclick="window.location.href='artist-profile.html?id=rikoto'; event.stopPropagation();">
+                <div class="comic-author"
+                    onclick="window.location.href='artist-profile.html?id=rikoto'; event.stopPropagation();">
                     <img src="https://i.postimg.cc/6qvPXv17/photo-5305270117032127745-y.jpg" alt="Автор">
                     <span>Rikoto</span>
                 </div>
@@ -2223,7 +2308,8 @@
             <div class="comic-status ongoing">Онгоинг</div>
             <div class="comic-info">
                 <h3 class="comic-title">Сердца в тумане</h3>
-                <div class="comic-author" onclick="window.location.href='artist-profile.html?id=coenabi'; event.stopPropagation();">
+                <div class="comic-author"
+                    onclick="window.location.href='artist-profile.html?id=coenabi'; event.stopPropagation();">
                     <img src="https://i.postimg.cc/6Q7fPCjP/photo-5287398650739285319-y.jpg" alt="Автор">
                     <span>coenabi</span>
                 </div>
@@ -2242,7 +2328,8 @@
             <div class="comic-status completed">Завершен</div>
             <div class="comic-info">
                 <h3 class="comic-title">Тени прошлого</h3>
-                <div class="comic-author" onclick="window.location.href='artist-profile.html?id=alexia'; event.stopPropagation();">
+                <div class="comic-author"
+                    onclick="window.location.href='artist-profile.html?id=alexia'; event.stopPropagation();">
                     <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" alt="Автор">
                     <span>Алексия</span>
                 </div>
@@ -2253,12 +2340,26 @@
                 </div>
             </div>
         </div>
-
-       
     </div>
 
     <!-- Modal 1 -->
     <div id="comic1" class="comic-modal">
+        <!-- Navigation buttons for desktop -->
+        <div class="comic-modal-nav prev" onclick="navigateComicModal('prev')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+            </svg>
+        </div>
+        <div class="comic-modal-nav next" onclick="navigateComicModal('next')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+            </svg>
+        </div>
+        
+        <!-- Swipe areas for mobile -->
+        <div class="comic-modal-swipe-area left" id="swipeLeft"></div>
+        <div class="comic-modal-swipe-area right" id="swipeRight"></div>
+        
         <div class="comic-modal-container">
             <div class="comic-modal-header">
                 <h2 class="comic-modal-title">Путешествие в Элизиум</h2>
@@ -2267,7 +2368,8 @@
             <div class="comic-modal-body">
                 <div class="comic-modal-left">
                     <div class="comic-modal-cover-container">
-                        <img src="https://i.postimg.cc/D0QggFjy/photo-5199688117110563758-y.jpg" alt="Обложка" class="comic-modal-cover">
+                        <img src="https://i.postimg.cc/D0QggFjy/photo-5199688117110563758-y.jpg" alt="Обложка"
+                            class="comic-modal-cover">
                     </div>
                     <div class="comic-modal-meta">
                         <div class="comic-modal-author" onclick="window.location.href='artist-profile.html?id=alexia'">
@@ -2275,8 +2377,10 @@
                             Алексия
                         </div>
                         <div class="comic-modal-date">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#aaa"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" />
                             </svg>
                             Обновлено: 15.06.2023
                         </div>
@@ -2285,7 +2389,8 @@
                 </div>
                 <div class="comic-modal-right">
                     <div class="comic-modal-description">
-                        История о молодой девушке, которая обнаруживает, что является избранной в мире магии и чародейства.
+                        История о молодой девушке, которая обнаруживает, что является избранной в мире магии и
+                        чародейства.
                         Ей предстоит отправиться в опасное путешествие через зачарованные земли Элизиума, чтобы найти
                         древний артефакт, способный спасти оба мира от надвигающейся катастрофы.
                     </div>
@@ -2300,32 +2405,40 @@
 
                     <div class="comic-modal-chapters">
                         <h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
                             </svg>
                             Главы
                         </h3>
                         <div class="comic-modal-chapter-list">
                             <div class="comic-modal-chapter">
-                                <div class="comic-modal-chapter-info">
-                                    <div class="comic-modal-chapter-title">Глава 1: Пробуждение</div>
-                                    <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                                        </svg>
-                                        15.06.2023
+                                <a href="Comics.html/Comic1.html" class="chapter-link">
+                                    <div class="comic-modal-chapter-info">
+                                        <div class="comic-modal-chapter-title">Глава 1: Пробуждение</div>
+                                        <div class="comic-modal-chapter-date">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                            </svg>
+                                            15.06.2023
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="comic-modal-chapter-new">NEW</div>
+                                    <div class="comic-modal-chapter-new">NEW</div>
+                                </a>
                             </div>
                             <div class="comic-modal-chapter">
                                 <div class="comic-modal-chapter-info">
                                     <div class="comic-modal-chapter-title">Глава 2: Первые шаги</div>
                                     <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                                         </svg>
                                         22.06.2023
                                     </div>
@@ -2335,9 +2448,11 @@
                                 <div class="comic-modal-chapter-info">
                                     <div class="comic-modal-chapter-title">Глава 3: Встреча с драконом</div>
                                     <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                                         </svg>
                                         29.06.2023
                                     </div>
@@ -2347,9 +2462,11 @@
                                 <div class="comic-modal-chapter-info">
                                     <div class="comic-modal-chapter-title">Глава 3: Встреча с драконом</div>
                                     <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                                         </svg>
                                         29.06.2023
                                     </div>
@@ -2357,17 +2474,22 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="comic-modal-actions">
                         <button class="comic-modal-btn comic-modal-btn-primary">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
                             </svg>
                             Читать первую главу
                         </button>
-                        <a href="https://t.me/Artemisia_comics/1" class="comic-modal-btn comic-modal-btn-secondary" target="_blank">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.03-.09.06-.42-.08-.59-.13-.18-.32-.24-.5-.22-.21.03-.36.06-.76.37-.85.56-2.91 1.92-4.19 2.72-.48.31-.92.46-1.31.48-.43.01-1.25-.24-1.87-.44-.75-.24-1.35-.37-1.3-.78.03-.24.33-.5.91-.76 1.47-.6 4.61-1.47 6.47-1.77 1.34-.22 2.72-.14 3.04.14.42.37.28 2.17.64 3.62.37 1.57.56 1.71 1.05 1.6.49-.11 1.67-1.1 1.91-1.5.24-.41.48-1.45.55-2 .07-.55.03-.85-.03-.94-.07-.1-.23-.16-.48-.09z"/>
+                        <a href="https://t.me/Artemisia_comics/1" class="comic-modal-btn comic-modal-btn-secondary"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFD700"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.03-.09.06-.42-.08-.59-.13-.18-.32-.24-.5-.22-.21.03-.36.06-.76.37-.85.56-2.91 1.92-4.19 2.72-.48.31-.92.46-1.31.48-.43.01-1.25-.24-1.87-.44-.75-.24-1.35-.37-1.3-.78.03-.24.33-.5.91-.76 1.47-.6 4.61-1.47 6.47-1.77 1.34-.22 2.72-.14 3.04.14.42.37.28 2.17.64 3.62.37 1.57.56 1.71 1.05 1.6.49-.11 1.67-1.1 1.91-1.5.24-.41.48-1.45.55-2 .07-.55.03-.85-.03-.94-.07-.1-.23-.16-.48-.09z" />
                             </svg>
                             Читать в Telegram
                         </a>
@@ -2379,6 +2501,22 @@
 
     <!-- Modal 2 -->
     <div id="comic2" class="comic-modal">
+        <!-- Navigation buttons for desktop -->
+        <div class="comic-modal-nav prev" onclick="navigateComicModal('prev')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+            </svg>
+        </div>
+        <div class="comic-modal-nav next" onclick="navigateComicModal('next')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+            </svg>
+        </div>
+        
+        <!-- Swipe areas for mobile -->
+        <div class="comic-modal-swipe-area left" id="swipeLeft"></div>
+        <div class="comic-modal-swipe-area right" id="swipeRight"></div>
+        
         <div class="comic-modal-container">
             <div class="comic-modal-header">
                 <h2 class="comic-modal-title">Кибер-революция</h2>
@@ -2387,7 +2525,8 @@
             <div class="comic-modal-body">
                 <div class="comic-modal-left">
                     <div class="comic-modal-cover-container">
-                        <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" alt="Обложка" class="comic-modal-cover">
+                        <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" alt="Обложка"
+                            class="comic-modal-cover">
                     </div>
                     <div class="comic-modal-meta">
                         <div class="comic-modal-author" onclick="window.location.href='artist-profile.html?id=rikoto'">
@@ -2395,8 +2534,10 @@
                             Rikoto
                         </div>
                         <div class="comic-modal-date">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#aaa"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" />
                             </svg>
                             Завершен: 10.05.2023
                         </div>
@@ -2405,7 +2546,8 @@
                 </div>
                 <div class="comic-modal-right">
                     <div class="comic-modal-description">
-                        В недалеком будущем, где технологии достигли невероятных высот, группа хакеров обнаруживает заговор
+                        В недалеком будущем, где технологии достигли невероятных высот, группа хакеров обнаруживает
+                        заговор
                         корпораций по контролю над сознанием людей. Они должны объединиться, чтобы разоблачить правду и
                         начать кибер-революцию, которая изменит мир навсегда.
                     </div>
@@ -2420,8 +2562,10 @@
 
                     <div class="comic-modal-chapters">
                         <h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
                             </svg>
                             Главы
                         </h3>
@@ -2430,9 +2574,11 @@
                                 <div class="comic-modal-chapter-info">
                                     <div class="comic-modal-chapter-title">Глава 1: Пробуждение</div>
                                     <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                                         </svg>
                                         15.06.2023
                                     </div>
@@ -2442,9 +2588,11 @@
                                 <div class="comic-modal-chapter-info">
                                     <div class="comic-modal-chapter-title">Глава 2: Первые шаги</div>
                                     <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                                         </svg>
                                         22.06.2023
                                     </div>
@@ -2454,9 +2602,11 @@
                                 <div class="comic-modal-chapter-info">
                                     <div class="comic-modal-chapter-title">Глава 3: Встреча с драконом</div>
                                     <div class="comic-modal-chapter-date">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
                                         </svg>
                                         29.06.2023
                                     </div>
@@ -2464,17 +2614,22 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="comic-modal-actions">
                         <button class="comic-modal-btn comic-modal-btn-primary">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#333"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
                             </svg>
                             Читать первую главу
                         </button>
-                        <a href="https://t.me/Artemisia_comics/2" class="comic-modal-btn comic-modal-btn-secondary" target="_blank">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.03-.09.06-.42-.08-.59-.13-.18-.32-.24-.5-.22-.21.03-.36.06-.76.37-.85.56-2.91 1.92-4.19 2.72-.48.31-.92.46-1.31.48-.43.01-1.25-.24-1.87-.44-.75-.24-1.35-.37-1.3-.78.03-.24.33-.5.91-.76 1.47-.6 4.61-1.47 6.47-1.77 1.34-.22 2.72-.14 3.04.14.42.37.28 2.17.64 3.62.37 1.57.56 1.71 1.05 1.6.49-.11 1.67-1.1 1.91-1.5.24-.41.48-1.45.55-2 .07-.55.03-.85-.03-.94-.07-.1-.23-.16-.48-.09z"/>
+                        <a href="https://t.me/Artemisia_comics/2" class="comic-modal-btn comic-modal-btn-secondary"
+                            target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFD700"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.03-.09.06-.42-.08-.59-.13-.18-.32-.24-.5-.22-.21.03-.36.06-.76.37-.85.56-2.91 1.92-4.19 2.72-.48.31-.92.46-1.31.48-.43.01-1.25-.24-1.87-.44-.75-.24-1.35-.37-1.3-.78.03-.24.33-.5.91-.76 1.47-.6 4.61-1.47 6.47-1.77 1.34-.22 2.72-.14 3.04.14.42.37.28 2.17.64 3.62.37 1.57.56 1.71 1.05 1.6.49-.11 1.67-1.1 1.91-1.5.24-.41.48-1.45.55-2 .07-.55.03-.85-.03-.94-.07-.1-.23-.16-.48-.09z" />
                             </svg>
                             Читать в Telegram
                         </a>
@@ -2553,7 +2708,7 @@
         let filtersScrollPosition = 0;
         let isMenuOpen = false;
         let isFiltersOpen = false;
-        
+
         function toggleMenu() {
             const drawer = document.getElementById('drawer');
             const overlay = document.getElementById('overlay');
@@ -2569,7 +2724,7 @@
                 body.classList.remove('menu-open');
                 searchInput.disabled = false;
                 isMenuOpen = false;
-                
+
                 // Smooth scroll to saved position
                 setTimeout(() => {
                     window.scrollTo({
@@ -2580,7 +2735,7 @@
             } else {
                 // Save scroll position before opening menu
                 scrollPosition = window.pageYOffset;
-                
+
                 // Open menu with animation
                 drawer.classList.add('open');
                 overlay.classList.add('active');
@@ -2588,7 +2743,7 @@
                 body.classList.add('menu-open');
                 searchInput.disabled = true;
                 isMenuOpen = true;
-                
+
                 // Close filters if open
                 if (isFiltersOpen) {
                     closeFilters();
@@ -2600,10 +2755,10 @@
             event.preventDefault();
             const link = event.currentTarget;
             const submenu = link.nextElementSibling;
-            
+
             link.classList.toggle('active');
             submenu.classList.toggle('active');
-            
+
             // Close other submenus
             document.querySelectorAll('.has-submenu').forEach(item => {
                 if (item !== link) {
@@ -2747,7 +2902,7 @@
                 dropdown.classList.remove('show');
                 body.classList.remove('filters-open');
                 isFiltersOpen = false;
-                
+
                 // Smooth scroll to saved position
                 setTimeout(() => {
                     window.scrollTo({
@@ -2763,7 +2918,7 @@
                 dropdown.classList.add('show');
                 body.classList.add('filters-open');
                 isFiltersOpen = true;
-                
+
                 // Close menu if open
                 if (isMenuOpen) {
                     toggleMenu();
@@ -2920,7 +3075,7 @@
             document.body.classList.add('filters-open');
             isFiltersOpen = true;
             updateMobileFilters();
-            
+
             // Close menu if open
             if (isMenuOpen) {
                 toggleMenu();
@@ -2933,7 +3088,7 @@
             document.body.style.overflow = 'auto';
             document.body.classList.remove('filters-open');
             isFiltersOpen = false;
-            
+
             // Smooth scroll to saved position
             setTimeout(() => {
                 window.scrollTo({
@@ -3077,14 +3232,114 @@
         }
 
         // Comic Modal Functions
+        let currentComicModal = null;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const comicModals = ['comic1', 'comic2', 'comic3', 'comic4'];
+
         function openComicModal(modalId) {
+            currentComicModal = modalId;
             document.getElementById(modalId).style.display = 'block';
             document.body.style.overflow = 'hidden';
+            
+            // Add event listeners for swipe gestures on mobile
+            if (window.innerWidth <= 767) {
+                const modal = document.getElementById(modalId);
+                modal.addEventListener('touchstart', handleTouchStart, false);
+                modal.addEventListener('touchend', handleTouchEnd, false);
+            }
+            
+            // Add keyboard event listener
+            document.addEventListener('keydown', handleKeyDown);
+            
+            // Add event listeners for chapters
+            const chapters = document.querySelectorAll(`#${modalId} .comic-modal-chapter`);
+            chapters.forEach(chapter => {
+                chapter.addEventListener('click', function() {
+                    const comicId = modalId.replace('comic', '');
+                    const chapterTitle = this.querySelector('.comic-modal-chapter-title').textContent;
+                    const chapterNum = chapterTitle.match(/\d+/)[0]; // Extract chapter number
+                    
+                    // Navigate to the chapter reader page
+                    window.location.href = `comic-reader.html?comic=${comicId}&chapter=${chapterNum}`;
+                });
+            });
         }
 
         function closeComicModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
             document.body.style.overflow = 'auto';
+            currentComicModal = null;
+            
+            // Remove event listeners for swipe gestures
+            if (window.innerWidth <= 767) {
+                const modal = document.getElementById(modalId);
+                modal.removeEventListener('touchstart', handleTouchStart, false);
+                modal.removeEventListener('touchend', handleTouchEnd, false);
+            }
+            
+            // Remove keyboard event listener
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+
+        function navigateComicModal(direction) {
+            if (!currentComicModal) return;
+            
+            const currentComicNum = parseInt(currentComicModal.replace('comic', ''));
+            let nextComicNum;
+            
+            if (direction === 'prev') {
+                nextComicNum = currentComicNum - 1;
+                if (nextComicNum < 1) nextComicNum = comicModals.length; // Loop to last comic
+            } else {
+                nextComicNum = currentComicNum + 1;
+                if (nextComicNum > comicModals.length) nextComicNum = 1; // Loop to first comic
+            }
+            
+            const nextComicId = `comic${nextComicNum}`;
+            
+            // Close current modal and open next one
+            closeComicModal(currentComicModal);
+            openComicModal(nextComicId);
+        }
+
+        // Keyboard navigation handler
+        function handleKeyDown(event) {
+            if (!currentComicModal) return;
+            
+            switch(event.key) {
+                case 'ArrowLeft':
+                    navigateComicModal('prev');
+                    break;
+                case 'ArrowRight':
+                    navigateComicModal('next');
+                    break;
+                case 'Escape':
+                    closeComicModal(currentComicModal);
+                    break;
+            }
+        }
+
+        // Touch event handlers for mobile swipe
+        function handleTouchStart(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum swipe distance to trigger navigation
+            
+            if (touchStartX - touchEndX > swipeThreshold) {
+                // Swipe left - next comic
+                navigateComicModal('next');
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                // Swipe right - previous comic
+                navigateComicModal('prev');
+            }
         }
 
         // Close modals when clicking outside
@@ -3102,24 +3357,6 @@
                 closeMobileFilters();
             }
         }
-
-        // Close modals with ESC key
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                // Comic modals
-                document.querySelectorAll('.comic-modal').forEach(modal => {
-                    if (modal.style.display === 'block') {
-                        closeComicModal(modal.id);
-                    }
-                });
-
-                // Mobile filters modal
-                const mobileFiltersModal = document.getElementById('mobileFiltersModal');
-                if (mobileFiltersModal.style.display === 'block') {
-                    closeMobileFilters();
-                }
-            }
-        });
 
         // Back to Top Function
         function scrollToTop() {
