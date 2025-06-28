@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комикс-ридер</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --panel-bg: rgba(30, 30, 30, 0.9);
+            --text-color: #e0e0e0;
+            --accent-color: #bb86fc;
+            --brightness: 100%;
+            --zoom: 1;
+        }
+
+        .light-theme {
+            --bg-color: #f5f5f5;
+            --panel-bg: rgba(245, 245, 245, 0.9);
+            --text-color: #333333;
+            --accent-color: #6200ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+
+        #comic-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .comic-page {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: brightness(var(--brightness));
+        }
+
+        .comic-page.active {
+            opacity: 1;
+        }
+
+        .comic-page img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transform: scale(var(--zoom));
+            transform-origin: center;
+            transition: transform 0.2s ease;
+        }
+
+        /* Вертикальный режим чтения */
+        .vertical-mode .comic-page {
+            position: relative;
+            height: auto;
+            min-height: 100vh;
+            margin-bottom: 20px;
+        }
+
+        .vertical-mode #comic-container {
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+        }
+
+        .vertical-mode .comic-page {
+            scroll-snap-align: start;
+        }
+
+        /* Индикатор страницы */
+        .page-indicator {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--panel-bg);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .vertical-mode .page-indicator {
+            display: block;
+        }
+
+        /* Кнопки навигации для мобильных */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 50%;
+            z-index: 40;
+        }
+
+        .mobile-nav.prev {
+            top: 0;
+        }
+
+        .mobile-nav.next {
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: block;
+            }
+        }
+
+        #control-panel {
+            position: fixed;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            background-color: var(--panel-bg);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: bottom 0.3s ease;
+            z-index: 100;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #control-panel.visible {
+            bottom: 0;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .chapter-list {
+            list-style: none;
+        }
+
+        .chapter-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .chapter-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .settings-option {
+            margin-bottom: 15px;
+        }
+
+        .settings-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider {
+            flex-grow: 1;
+            height: 5px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="comic-container">
+        <div class="page-indicator">Страница 1 из 2</div>
+        
+        <!-- Кнопки навигации для мобильных -->
+        <div class="mobile-nav prev" id="prev-page-area"></div>
+        <div class="mobile-nav next" id="next-page-area"></div>
+        
+        <div class="comic-page active">
+            <img src="https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%201/1.png?updatedAt=1751060764359" alt="Страница комикса 1">
+        </div>
+        <div class="comic-page">
+            <img src="https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%201/2.png?updatedAt=1751060764271" alt="Страница комикса 2">
+        </div>
+    </div>
+
+    <div id="control-panel">
+        <button id="fullscreen-btn" class="control-btn" title="Полный экран">⛶</button>
+        <button id="chapters-btn" class="control-btn" title="Главы">📖</button>
+        <button id="settings-btn" class="control-btn" title="Настройки">⚙️</button>
+    </div>
+
+    <!-- Модальное окно глав -->
+    <div id="chapters-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Главы</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <ul class="chapter-list">
+                <li class="chapter-item" data-page="0">Глава 1 - Страница 1</li>
+                <li class="chapter-item" data-page="1">Глава 1 - Страница 2</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Настройки</div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="settings-option">
+                <label class="settings-label">Режим чтения:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="reading-mode" value="horizontal" checked>
+                        Горизонтальный (← →)
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="reading-mode" value="vertical">
+                        Вертикальный (↑ ↓)
+                    </label>
+                </div>
+            </div>
+            <div class="settings-option">
+                <label class="settings-label">Тема:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="theme" value="dark" checked>
+                        Темная
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="theme" value="light">
+                        Светлая
+                    </label>
+                </div>
+            </div>
+            <div class="settings-option">
+                <label class="settings-label">Яркость: <span id="brightness-value">100</span>%</label>
+                <div class="slider-container">
+                    <input type="range" min="50" max="150" value="100" class="slider" id="brightness-slider">
+                </div>
+            </div>
+            <div class="settings-option">
+                <label class="settings-label">Масштаб: <span id="zoom-value">100</span>%</label>
+                <div class="slider-container">
+                    <input type="range" min="50" max="150" value="100" class="slider" id="zoom-slider">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Элементы страницы
+            const comicContainer = document.getElementById('comic-container');
+            const pages = document.querySelectorAll('.comic-page');
+            const controlPanel = document.getElementById('control-panel');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const chaptersBtn = document.getElementById('chapters-btn');
+            const settingsBtn = document.getElementById('settings-btn');
+            const chaptersModal = document.getElementById('chapters-modal');
+            const settingsModal = document.getElementById('settings-modal');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            const chapterItems = document.querySelectorAll('.chapter-item');
+            const brightnessSlider = document.getElementById('brightness-slider');
+            const brightnessValue = document.getElementById('brightness-value');
+            const zoomSlider = document.getElementById('zoom-slider');
+            const zoomValue = document.getElementById('zoom-value');
+            const themeRadios = document.querySelectorAll('input[name="theme"]');
+            const readingModeRadios = document.querySelectorAll('input[name="reading-mode"]');
+            const pageIndicator = document.querySelector('.page-indicator');
+            const prevPageArea = document.getElementById('prev-page-area');
+            const nextPageArea = document.getElementById('next-page-area');
+
+            // Состояние приложения
+            let currentPage = 0;
+            let isPanelVisible = false;
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let readingMode = 'horizontal';
+            let scrollTimeout = null;
+
+            // Инициализация
+            updatePage();
+            checkPanelVisibility();
+
+            // Функции
+            function updatePage() {
+                pages.forEach((page, index) => {
+                    page.classList.toggle('active', index === currentPage);
+                });
+                
+                // Обновляем индикатор страницы
+                if (pageIndicator) {
+                    pageIndicator.textContent = `Страница ${currentPage + 1} из ${pages.length}`;
+                }
+            }
+
+            function goToPage(pageIndex) {
+                if (pageIndex >= 0 && pageIndex < pages.length) {
+                    currentPage = pageIndex;
+                    updatePage();
+                    
+                    // Прокрутка к странице в вертикальном режиме
+                    if (readingMode === 'vertical') {
+                        pages[pageIndex].scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+
+            function nextPage() {
+                if (currentPage < pages.length - 1) {
+                    goToPage(currentPage + 1);
+                }
+            }
+
+            function prevPage() {
+                if (currentPage > 0) {
+                    goToPage(currentPage - 1);
+                }
+            }
+
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.error(`Ошибка при включении полноэкранного режима: ${err.message}`);
+                    });
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    }
+                }
+            }
+
+            function checkPanelVisibility() {
+                if (scrollTimeout) {
+                    clearTimeout(scrollTimeout);
+                }
+
+                controlPanel.classList.remove('visible');
+                isPanelVisible = false;
+
+                scrollTimeout = setTimeout(() => {
+                    controlPanel.classList.add('visible');
+                    isPanelVisible = true;
+                }, 100);
+            }
+
+            function handleSwipe(direction) {
+                if (readingMode === 'horizontal') {
+                    if (direction === 'left') nextPage();
+                    if (direction === 'right') prevPage();
+                } else {
+                    if (direction === 'up') nextPage();
+                    if (direction === 'down') prevPage();
+                }
+            }
+
+            function toggleReadingMode(mode) {
+                readingMode = mode;
+                if (mode === 'vertical') {
+                    comicContainer.classList.add('vertical-mode');
+                    comicContainer.style.touchAction = 'pan-y';
+                    pageIndicator.style.display = 'block';
+                    
+                    // Прокрутка к текущей странице
+                    setTimeout(() => {
+                        pages[currentPage].scrollIntoView();
+                    }, 100);
+                } else {
+                    comicContainer.classList.remove('vertical-mode');
+                    comicContainer.style.touchAction = 'pan-y';
+                    pageIndicator.style.display = 'none';
+                }
+            }
+
+            // Обработчики событий
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextPage();
+                if (e.key === 'ArrowLeft') prevPage();
+                if (e.key === 'ArrowDown' && readingMode === 'vertical') nextPage();
+                if (e.key === 'ArrowUp' && readingMode === 'vertical') prevPage();
+            });
+
+            comicContainer.addEventListener('wheel', (e) => {
+                if (readingMode === 'vertical') {
+                    if (e.deltaY > 0) nextPage();
+                    if (e.deltaY < 0) prevPage();
+                    e.preventDefault();
+                }
+                checkPanelVisibility();
+            });
+
+            comicContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            });
+
+            comicContainer.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const touchEndY = e.changedTouches[0].screenY;
+                const diffX = touchStartX - touchEndX;
+                const diffY = touchStartY - touchEndY;
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX > 50) handleSwipe('left');
+                    if (diffX < -50) handleSwipe('right');
+                } else {
+                    if (diffY > 50) handleSwipe('up');
+                    if (diffY < -50) handleSwipe('down');
+                }
+            });
+
+            // Нажатия на области для мобильных устройств
+            prevPageArea.addEventListener('click', (e) => {
+                if (readingMode === 'vertical') {
+                    prevPage();
+                } else {
+                    if (e.clientX < window.innerWidth / 2) {
+                        prevPage();
+                    }
+                }
+            });
+
+            nextPageArea.addEventListener('click', (e) => {
+                if (readingMode === 'vertical') {
+                    nextPage();
+                } else {
+                    if (e.clientX > window.innerWidth / 2) {
+                        nextPage();
+                    }
+                }
+            });
+
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+            chaptersBtn.addEventListener('click', () => {
+                chaptersModal.classList.add('active');
+            });
+
+            settingsBtn.addEventListener('click', () => {
+                settingsModal.classList.add('active');
+            });
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    chaptersModal.classList.remove('active');
+                    settingsModal.classList.remove('active');
+                });
+            });
+
+            chapterItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const pageIndex = parseInt(item.getAttribute('data-page'));
+                    goToPage(pageIndex);
+                    chaptersModal.classList.remove('active');
+                });
+            });
+
+            brightnessSlider.addEventListener('input', () => {
+                const value = brightnessSlider.value;
+                brightnessValue.textContent = value;
+                document.documentElement.style.setProperty('--brightness', `${value}%`);
+            });
+
+            zoomSlider.addEventListener('input', () => {
+                const value = zoomSlider.value;
+                zoomValue.textContent = value;
+                document.documentElement.style.setProperty('--zoom', value / 100);
+            });
+
+            themeRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'light') {
+                        document.body.classList.add('light-theme');
+                    } else {
+                        document.body.classList.remove('light-theme');
+                    }
+                });
+            });
+
+            readingModeRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    toggleReadingMode(radio.value);
+                });
+            });
+
+            // Закрытие модальных окон при клике вне их области
+            window.addEventListener('click', (e) => {
+                if (e.target === chaptersModal) chaptersModal.classList.remove('active');
+                if (e.target === settingsModal) settingsModal.classList.remove('active');
+            });
+
+            // Инициализация режима чтения
+            const initialReadingMode = document.querySelector('input[name="reading-mode"]:checked').value;
+            toggleReadingMode(initialReadingMode);
+        });
+    </script>
+</body>
+</html>
