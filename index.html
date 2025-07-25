@@ -409,20 +409,62 @@
             <h2 class="section-title">Новые публикации</h2>
         </div>
 
-        <!-- Лента изображений -->
+        <!-- Лента изображений с авторами -->
         <div class="works-carousel" id="newPublicationsCarousel">
             <div class="works-inner" id="newPublicationsWorks">
-                <!-- Ваши изображения -->
-                <img src="https://i.postimg.cc/K81k1FrZ/6.jpg" class="work-thumb-2" alt="">
-                <img src="https://i.postimg.cc/nrTjDhPL/1.jpg" class="work-thumb-3" alt="">
-                <img src="https://i.postimg.cc/C5Tzv2q8/2.jpg" class="work-thumb-2" alt="">
-                <img src="https://i.postimg.cc/B6jP9KC0/3.jpg" class="work-thumb-2" alt="">
+                <!-- Пример работы с автором -->
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/K81k1FrZ/6.jpg" class="work-thumb-2" alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/creppylandau.html'">
+                        <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">creppylandau</span>
+                    </div>
+                </div>
 
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/nrTjDhPL/1.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/Forlit.html'">
+                        <img src="https://i.postimg.cc/QMqgN1q7/photo-5280961993706172824-y.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Forlit</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/C5Tzv2q8/2.jpg" class="work-thumb-2" alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/Mell.html'">
+                        <img src="https://i.postimg.cc/qMFN0HrQ/photo-5251654726016166479-x.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Mell</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/B6jP9KC0/3.jpg" class="work-thumb-2" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#38'">
+                        <img src="https://i.postimg.cc/pdYBDgJZ/photo-5235523292708859746-y.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Виего</span>
+                    </div>
+                </div>
 
             </div>
             <button class="works-control prev" onclick="prevWork('newPublicationsWorks')">&#10094;</button>
             <button class="works-control next" onclick="nextWork('newPublicationsWorks')">&#10095;</button>
         </div>
+    </section>
+
+    <!-- Модальное окно для просмотра изображений с навигацией -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-close-btn" onclick="closeImageModal()">&times;</span>
+        <div class="image-modal-content">
+            <div class="image-nav image-prev" onclick="navigateImage(-1)">&#10094;</div>
+            <img id="expandedImg" class="image-modal-img" src="" alt="Expanded Image">
+            <div class="image-nav image-next" onclick="navigateImage(1)">&#10095;</div>
+            <div class="image-counter" id="imageCounter">1 / 4</div>
+        </div>
+    </div>
     </section>
 
     <!-- Новая секция с подписками -->
@@ -600,15 +642,18 @@
         <div class="illustrators-grid" id="illustratorsGrid">
 
             <!-- Иллюстраторы недели (4 видимых + 4 скрытых) -->
-            <div class="illustrator-card-v2 week" onclick="openImageModal('https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg')">
+            <div class="illustrator-card-v2 week"
+                onclick="openImageModal('https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg')">
                 <div class="illustrator-badge">Топ недели</div>
                 <div class="illustrator-image-container">
-                    <img src="https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg" alt="Художник 6" class="illustrator-image">
+                    <img src="https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg" alt="Художник 6"
+                        class="illustrator-image">
                 </div>
                 <div class="illustrator-info">
                     <h3 class="illustrator-name">
                         <a href="Prem/creppylandau.html" onclick="event.stopPropagation()">
-                            <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg" class="illustrator-avatar" alt="Ава">
+                            <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg"
+                                class="illustrator-avatar" alt="Ава">
                         </a>
                         creppylandau
                     </h3>
@@ -628,9 +673,11 @@
                 </div>
             </div>
 
-            <div class="illustrator-card-v2 week " onclick="openImageModal('https://i.postimg.cc/zB3CKhRx/photo-5458442613746168193-y.jpg')">
+            <div class="illustrator-card-v2 week "
+                onclick="openImageModal('https://i.postimg.cc/zB3CKhRx/photo-5458442613746168193-y.jpg')">
                 <div class="illustrator-image-container">
-                    <img src="https://i.postimg.cc/zB3CKhRx/photo-5458442613746168193-y.jpg" alt="Художник 9" class="illustrator-image">
+                    <img src="https://i.postimg.cc/zB3CKhRx/photo-5458442613746168193-y.jpg" alt="Художник 9"
+                        class="illustrator-image">
                 </div>
                 <div class="illustrator-info">
                     <h3 class="illustrator-name">
@@ -664,8 +711,7 @@
                 <div class="illustrator-info">
                     <h3 class="illustrator-name">
                         <a href="html/Artist.html#197" onclick="event.stopPropagation()">
-                            <img src="https://i.postimg.cc/HLRPCgGT/6.jpg"
-                                class="illustrator-avatar" alt="Ава">
+                            <img src="https://i.postimg.cc/HLRPCgGT/6.jpg" class="illustrator-avatar" alt="Ава">
                         </a>
                         GAYANA
                     </h3>
@@ -780,7 +826,7 @@
 
             <!-- Иллюстраторы месяца (4 видимых + 4 скрытых) -->
             <div class="illustrator-card-v2 month" onclick="openImageModal('https://i.postimg.cc/qM2qQ5Xf/1.jpg')">
-                
+
                 <div class="illustrator-image-container">
                     <img src="https://i.postimg.cc/qM2qQ5Xf/1.jpg" alt="Художник 6" class="illustrator-image">
                 </div>
@@ -807,15 +853,18 @@
                 </div>
             </div>
 
-            <div class="illustrator-card-v2 month" onclick="openImageModal('https://i.postimg.cc/2jPgptm3/photo-5438235050316526562-y.jpg')">
-                
+            <div class="illustrator-card-v2 month"
+                onclick="openImageModal('https://i.postimg.cc/2jPgptm3/photo-5438235050316526562-y.jpg')">
+
                 <div class="illustrator-image-container">
-                    <img src="https://i.postimg.cc/2jPgptm3/photo-5438235050316526562-y.jpg" alt="Художник 6" class="illustrator-image">
+                    <img src="https://i.postimg.cc/2jPgptm3/photo-5438235050316526562-y.jpg" alt="Художник 6"
+                        class="illustrator-image">
                 </div>
                 <div class="illustrator-info">
                     <h3 class="illustrator-name">
                         <a href="Prem/roklimorii.html" onclick="event.stopPropagation()">
-                            <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="illustrator-avatar" alt="Ава">
+                            <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg"
+                                class="illustrator-avatar" alt="Ава">
                         </a>
                         roklimorii
                     </h3>
@@ -835,15 +884,18 @@
                 </div>
             </div>
 
-            <div class="illustrator-card-v2 month hidden-illustrators" onclick="openImageModal('https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg')">
+            <div class="illustrator-card-v2 month hidden-illustrators"
+                onclick="openImageModal('https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg')">
                 <div class="illustrator-badge">Топ месяца</div>
                 <div class="illustrator-image-container">
-                    <img src="https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg" alt="Художник 6" class="illustrator-image">
+                    <img src="https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg" alt="Художник 6"
+                        class="illustrator-image">
                 </div>
                 <div class="illustrator-info">
                     <h3 class="illustrator-name">
                         <a href="Prem/creppylandau.html" onclick="event.stopPropagation()">
-                            <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg" class="illustrator-avatar" alt="Ава">
+                            <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg"
+                                class="illustrator-avatar" alt="Ава">
                         </a>
                         creppylandau
                     </h3>
@@ -1840,6 +1892,153 @@
         document.addEventListener('DOMContentLoaded', function () {
             initCarousel('newPublicationsWorks');
             updateCarouselControls('newPublicationsWorks');
+        });
+    </script>
+
+    <script>
+        // Глобальные переменные для управления галереей изображений
+        let currentImageIndex = 0;
+        let imageGallery = [];
+        let currentGalleryType = ''; // 'new-publications' или 'popular-illustrators'
+        let currentFilter = 'week'; // 'week' или 'month'
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Модифицированная функция открытия изображения
+        function openImageModal(imgSrc, galleryType = 'new-publications', filterType = 'week') {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            // Сохраняем тип галереи и фильтр
+            currentGalleryType = galleryType;
+            currentFilter = filterType;
+
+            // Собираем все изображения в галерею в зависимости от типа и фильтра
+            if (galleryType === 'new-publications') {
+                // Для новых публикаций - только изображения работ (исключаем аватарки)
+                imageGallery = Array.from(document.querySelectorAll('#newPublicationsWorks .work-container img')).filter(img =>
+                    !img.classList.contains('work-author-avatar')
+                );
+            } else {
+                // Для популярных иллюстраторов с учетом фильтра - только изображения работ
+                imageGallery = Array.from(document.querySelectorAll(`.illustrator-card-v2.${filterType} .illustrator-image`));
+            }
+
+            // Находим индекс текущего изображения
+            currentImageIndex = imageGallery.findIndex(img => img.src === imgSrc);
+
+            // Обновляем счетчик
+            updateImageCounter();
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Добавляем обработчики для свайпов
+            imageModal.addEventListener('touchstart', handleTouchStart, false);
+            imageModal.addEventListener('touchend', handleTouchEnd, false);
+        }
+
+        // Остальные функции остаются без изменений
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            const imageModal = document.getElementById('imageModal');
+            imageModal.removeEventListener('touchstart', handleTouchStart, false);
+            imageModal.removeEventListener('touchend', handleTouchEnd, false);
+        }
+
+        function navigateImage(direction) {
+            if (imageGallery.length === 0) return;
+
+            currentImageIndex += direction;
+
+            if (currentImageIndex >= imageGallery.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = imageGallery.length - 1;
+            }
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.src = imageGallery[currentImageIndex].src;
+            updateImageCounter();
+
+            expandedImg.style.opacity = '0';
+            setTimeout(() => {
+                expandedImg.style.opacity = '1';
+            }, 50);
+        }
+
+        function updateImageCounter() {
+            const counter = document.getElementById('imageCounter');
+            if (counter && imageGallery.length > 0) {
+                counter.textContent = `${currentImageIndex + 1} / ${imageGallery.length}`;
+            }
+        }
+
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const threshold = 50;
+
+            if (touchEndX < touchStartX - threshold) {
+                navigateImage(1);
+            } else if (touchEndX > touchStartX + threshold) {
+                navigateImage(-1);
+            }
+        }
+
+        // Модифицируем обработчики кликов по изображениям
+        document.addEventListener('DOMContentLoaded', function () {
+            // Для новых публикаций - только изображения работ (исключаем аватарки)
+            document.querySelectorAll('#newPublicationsWorks .work-container img:not(.work-author-avatar)').forEach((thumb, index) => {
+                thumb.addEventListener('click', function (e) {
+                    // Дополнительная проверка, чтобы клик по автору не открывал модальное окно
+                    if (e.target.closest('.work-author')) {
+                        return;
+                    }
+                    e.stopPropagation();
+                    openImageModal(this.src, 'new-publications');
+                });
+            });
+
+            // Для популярных иллюстраторов (неделя)
+            document.querySelectorAll('.illustrator-card-v2.week .illustrator-image').forEach((thumb, index) => {
+                thumb.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    openImageModal(this.src, 'popular-illustrators', 'week');
+                });
+            });
+
+            // Для популярных иллюстраторов (месяц)
+            document.querySelectorAll('.illustrator-card-v2.month .illustrator-image').forEach((thumb, index) => {
+                thumb.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    openImageModal(this.src, 'popular-illustrators', 'month');
+                });
+            });
+        });
+
+        // Обработчики клавиш для навигации по изображениям
+        document.addEventListener('keydown', function (e) {
+            const imageModal = document.getElementById('imageModal');
+            if (imageModal.style.display !== 'block') return;
+
+            if (e.key === 'ArrowLeft') {
+                navigateImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateImage(1);
+            } else if (e.key === 'Escape') {
+                closeImageModal();
+            }
         });
     </script>
 </body>

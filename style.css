@@ -2478,3 +2478,110 @@ body.menu-open {
         font-size: 14px;
     }
 }
+
+/* Добавленные стили для работы с авторами в ленте */
+.work-container {
+    position: relative;
+    margin-right: 20px;
+}
+
+.work-author {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: white;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.work-author-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.work-author-name {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Модификации для модального окна изображений */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    touch-action: none;
+}
+
+.image-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.image-modal-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.image-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 20px;
+    user-select: none;
+    z-index: 2;
+}
+
+.image-prev {
+    left: 0;
+}
+
+.image-next {
+    right: 0;
+}
+
+.image-counter {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .image-nav {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    .image-counter {
+        top: 10px;
+        font-size: 14px;
+    }
+}
