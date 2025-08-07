@@ -189,6 +189,71 @@
     <!-- Художники -->
     <section>
 
+        <!-- GinGemin Prem -->
+        <section id="220">
+            <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/V6QhNVVk/photo-5233305891288249347-y.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/GinGemin.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/1XM7J558/photo-5233412397887256722-y.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> GinGemin </h1>
+                    <a href="https://t.me/ur_cosmo_gemini" class="profile-link"> @ur_cosmo_gemini
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм </p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="https://vk.com/gingemin" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/gingemin" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+                      
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist220Carousel">
+                <div class="works-inner" id="artist220Works">
+                    <img src="https://i.postimg.cc/Kc5WZQrm/photo-5221991856508892160-y.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/mkT6YFRx/photo-5226727457384690968-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/7YYWb7m0/photo-5233412397887256719-y.jpg" class="work-thumb-2" alt="">
+                    
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist220Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist220Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal220')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal220" class="modal">
+                <span class="close-btn" onclick="closeModal('modal220')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/Kc5WZQrm/photo-5221991856508892160-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/mkT6YFRx/photo-5226727457384690968-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/7YYWb7m0/photo-5233412397887256719-y.jpg" class="modal-img" alt="">
+                    
+                </div>
+            </div>
+        </section>
+
         <!-- Сандра Prem -->
         <section id="102">
             <section class="profile-section" data-style="Авторский" data-prem="true"
@@ -1339,7 +1404,7 @@
             </div>
         </section>
 
-        <!-- Эми Авагрей Prem -->
+        <!-- Эми Авагрей  -->
         <section id="Amy_Avagray">
                 <section class="profile-section" data-style="Аниме">
                     <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" alt="Аватар"
@@ -2272,12 +2337,12 @@
             <section class="profile-section" data-style="Неопределённый">
                 <img src="https://i.postimg.cc/rF5MD6yZ/photo-2025-07-19-18-43-00.jpg" alt="Аватар" class="avatar">
                 <div class="profile-info">
-                    <h1> </h1>
+                    <h1> Yugen </h1>
                     <a href="https://t.me/Sweet_millkk" class="profile-link"> @Sweet_millkk
 
                         <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
                     </a>
-                    <p>Стиль:Неопределённый </p>
+                    <p>Стиль: Неопределённый </p>
                     <div class="social-links">
                         <a href="https://t.me/yyugen69" class="social-link" target="_blank" title="Telegram">
                             <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
@@ -6188,6 +6253,7 @@
             initCarousel('artist217Works');
             initCarousel('artist218Works');
             initCarousel('artist219Works');
+            initCarousel('artist220Works');
 
 
 
