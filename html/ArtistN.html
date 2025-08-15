@@ -60,6 +60,13 @@
             </li>
 
             <li>
+                <a href="Prem_Artist.html">
+                    <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                    Prem Artist
+                </a>
+            </li>
+
+            <li>
                 <a href="Artist.html">
                     <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
                     Художники
@@ -164,7 +171,7 @@
             </button>
             <div class="filters-dropdown" id="filtersDropdown">
                 <a href="#" onclick="applyFilter('all', event)" class="active-filter">Все стили</a>
-                <a href="#" onclick="applyFilter('prem', event)">Prem Artist</a>
+               
             </div>
         </div>
     </section>
@@ -1961,73 +1968,6 @@
                     <img src="https://i.postimg.cc/JnBFgCHB/photo-5325763957211919354-y.jpg" class="modal-img" alt="">
                     <img src="https://i.postimg.cc/05D30xqT/photo-5325763957211919355-y.jpg" class="modal-img" alt="">
 
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Касцюшка Prem -->
-        <section id="96">
-            <section class="profile-section" data-style="Аниме" data-prem="true"
-                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/PxBnyZcn/photo-5262518283150683490-y.jpg')">
-                <div class="avatar-container" onclick="window.location.href='../Prem/Kastsyushka.html'">
-                    <div class="avatar-border"></div>
-                    <img src="https://i.postimg.cc/vB1d5X0v/photo-5260368274061914320-y.jpg" alt="Аватар"
-                        class="avatar">
-                    <div class="profile-button"> Профиль</div>
-                </div>
-
-                <div class="profile-info">
-                    <h1>Касцюшка</h1>
-                    <a href="https://t.me/bimbovna" class="profile-link">
-                        @bimbovna
-
-                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                    </a>
-                    <p>Стиль: Аниме</p>
-
-
-                    <div class="social-links">
-                        <!-- Telegram -->
-                        <a href="https://t.me/kasciuszka" class="social-link" target="_blank" rel="noopener noreferrer"
-                            aria-label="Telegram">
-                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
-                                loading="lazy" class="social-icon">
-                        </a>
-
-                    </div>
-                </div>
-            </section>
-
-            <h2 class="favorite-works">Публикации автора</h2>
-            <div class="works-carousel" id="artist96Carousel">
-                <div class="works-inner" id="artist96Works">
-                    <img src="https://i.postimg.cc/qvL0rNt2/photo-5260368274061914309-y.jpg" class="work-thumb-3"
-                        alt="">
-                    <img src="https://i.postimg.cc/Pq5H5dZ9/photo-5260368274061914310-y.jpg" class="work-thumb-3"
-                        alt="">
-                    <img src="https://i.postimg.cc/3x77zXwK/photo-5260764467615099561-y.jpg" class="work-thumb-3"
-                        alt="">
-                    <img src="https://i.postimg.cc/fbqN31fL/photo-5472009638045148320-y.jpg" class="work-thumb-3"
-                        alt="">
-
-                </div>
-                <button class="works-control prev" onclick="prevWork('artist96Works')">&#10094;</button>
-                <button class="works-control next" onclick="nextWork('artist96Works')">&#10095;</button>
-            </div>
-            <button class="show-works-btn" onclick="openModal('modal96')">Ознакомиться со всеми работами</button>
-
-            <!-- Модальное окно для второго художника -->
-            <div id="modal96" class="modal">
-                <span class="close-btn" onclick="closeModal('modal96')">&times;</span>
-                <div class="modal-header">
-                    <h2>Галерея работ</h2>
-                </div>
-                <div class="modal-content">
-                    <img src="https://i.postimg.cc/qvL0rNt2/photo-5260368274061914309-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/Pq5H5dZ9/photo-5260368274061914310-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/3x77zXwK/photo-5260764467615099561-y.jpg" class="modal-img" alt="">
-                    <img src="https://i.postimg.cc/fbqN31fL/photo-5472009638045148320-y.jpg" class="modal-img" alt="">
 
                 </div>
             </div>
@@ -9044,15 +8984,7 @@
             };
             filterDropdown.appendChild(allItem);
 
-            // Add "Prem Artist" filter
-            const premItem = document.createElement('a');
-            premItem.href = '#';
-            premItem.textContent = 'Prem Artist';
-            premItem.onclick = (e) => {
-                applyFilter('prem', e);
-                updateActiveFilter(e.target);
-            };
-            filterDropdown.appendChild(premItem);
+            
 
             // Add filters for each style
             styles.forEach(style => {
@@ -9601,7 +9533,7 @@
             initCarousel('artist93Works');
            
             initCarousel('artist95Works');
-            initCarousel('artist96Works');
+            
             initCarousel('artist97Works');
             initCarousel('artist98Works');
             initCarousel('artist99Works');
