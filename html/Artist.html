@@ -195,6 +195,56 @@
 
     <!-- Художники -->
     <section>    
+        <!-- Немезис -->
+        <section id="228">
+            <section class="profile-section" data-style="Авторский">
+                <img src="https://i.postimg.cc/s26Hj6KJ/image.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Немезис</h1>
+                    <a href="https://t.me/scarreyou" class="profile-link"> @scarreyou
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+                    <div class="social-links">
+                        <a href="https://t.me/nemesizzzzz" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist228Carousel">
+                <div class="works-inner" id="artist228Works">
+                    <img src="https://i.postimg.cc/02D4YC28/1.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/BZdyPz3Y/2.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/GmjSNhyV/3.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/2SYK2BVn/4.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/PqrFksbx/5.jpg" class="work-thumb-3" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist228Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist228Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal228')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal228" class="modal">
+                <span class="close-btn" onclick="closeModal('modal228')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/02D4YC28/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/BZdyPz3Y/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/GmjSNhyV/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/2SYK2BVn/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/PqrFksbx/5.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
         <!-- HOODED CROW -->
         <section id="224">
             <section class="profile-section" data-style="Мультяшный безлайн">
@@ -3365,6 +3415,7 @@
            initCarousel('artist227Works');
            initCarousel('artist226Works');
            initCarousel('artist224Works');
+           initCarousel('artist228Works');
 
 
             // Initialize filters
