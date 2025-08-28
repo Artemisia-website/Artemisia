@@ -195,6 +195,64 @@
 
     <!-- Художники -->
     <section>    
+        <!-- Savory -->
+        <section id="231">
+            <section class="profile-section" data-style="Семиреализм">
+                <img src="https://i.postimg.cc/LsJ2vqrH/Savory-ava.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> Savory </h1>
+                    <a href="https://t.me/devsev05" class="profile-link">
+                        @devsev05
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм </p>
+                    <div class="social-links">
+                        <a href="https://t.me/savoryarty" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                        <a href="https://tiktok.com/@savoryarty" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TT">
+                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist231Carousel">
+                <div class="works-inner" id="artist231Works">
+                    <img src="https://i.postimg.cc/LsJ2vqrH/Savory-ava.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/J4QrhCNW/Savory1.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/5yTwYFd6/Savory2.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/R0LQsFfD/Savory3.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/3Rj6ZYJ8/Savory4.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/Mp4h69FS/Savory5.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/cHYZypx2/Savory6.jpg" class="work-thumb-1" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist231Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist231Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal231')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal231" class="modal">
+                <span class="close-btn" onclick="closeModal('modal231')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/LsJ2vqrH/Savory-ava.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/J4QrhCNW/Savory1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/5yTwYFd6/Savory2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/R0LQsFfD/Savory3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3Rj6ZYJ8/Savory4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Mp4h69FS/Savory5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/cHYZypx2/Savory6.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
         <!-- K. Bunny -->
         <section id="229">
             <section class="profile-section" data-style="Графика">
@@ -3465,6 +3523,8 @@
            initCarousel('artist224Works');
            initCarousel('artist228Works');
            initCarousel('artist229Works');
+           initCarousel('artist231Works');
+
 
 
             // Initialize filters
