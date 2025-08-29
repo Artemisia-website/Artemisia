@@ -661,6 +661,71 @@
             </div>
         </section>
 
+        <!-- Фродо Prem -->
+        <section id="232">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Frodo.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/Px4Xzwst/photo-5249205404951508337-c.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Фродо</h1>
+                    <a href="https://t.me/Kerpichikc" class="profile-link"> @Kerpichikc
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+
+
+                    <div class="social-links">
+                       
+                        <!-- Telegram -->
+                        <a href="https://t.me/darbojiyi" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist232Carousel">
+                <div class="works-inner" id="artist232Works">
+                    <img src="https://i.postimg.cc/nhDnS5bS/photo-5253540822249501590-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/tJv98G4w/photo-5253540822249501592-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/HsKp2mK7/photo-5253540822249501591-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/QNfNF1Jm/photo-5253540822249501593-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/hPhDTvCB/photo-5253540822249501594-y.jpg" class="work-thumb-3" alt="">
+                   
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist232Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist232Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal232')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal232" class="modal">
+                <span class="close-btn" onclick="closeModal('modal232')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/nhDnS5bS/photo-5253540822249501590-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/tJv98G4w/photo-5253540822249501592-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HsKp2mK7/photo-5253540822249501591-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/QNfNF1Jm/photo-5253540822249501593-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hPhDTvCB/photo-5253540822249501594-y.jpg" class="modal-img" alt="">
+                   
+
+                </div>
+            </div>
+        </section>
+
         <!-- ich.morro Prem -->
         <section id="150">
             <section class="profile-section" data-style="Авторский" data-prem="true"
@@ -2174,6 +2239,8 @@
             initCarousel('artist193Works');
             initCarousel('artist220Works');
             initCarousel('artist230Works');
+            initCarousel('artist232Works');
+
 
 
 
